@@ -1,0 +1,207 @@
+<div class="issues-list-wrapper">
+    <div class="issues-filter">
+
+        <div class="issues-filter-item">
+            <div class="btn-group filter-group-item" 
+            (clickOutside)="onClickedOutsideDropdown(type)" #type>
+                <button type="button" outline="true" 
+                class="btn dropdown-toggle waves-dark filter-value"
+                 mdbWavesEffect (click)="showDropdown($event)">
+                    <label class="filter-label">Type: </label>{{statusFiltered.name}}
+                </button>
+                <div class="dropdown-menu-disable dropdown-primary">
+                    <ng-container *ngFor="let status of listStatusFilter">
+                        <div class="form-check">
+                            <input class="form-check-input" mdbInputDirective
+                             type="checkbox" id="type_{{status.status}}" 
+                             (click)="selectStatus($event, status)">
+                            <label class="form-check-label" 
+                            for="type_{{status.status}}">{{status.name}}</label>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+        <div class="issues-filter-item">
+            <div class="btn-group filter-group-item" 
+            (clickOutside)="onClickedOutsideDropdown(status)" #status>
+                <button type="button" outline="true" 
+                class="btn dropdown-toggle waves-dark filter-value"
+                 mdbWavesEffect (click)="showDropdown($event)">
+                    <label class="filter-label">Status: </label>{{statusFiltered.name}}
+                </button>
+                <div class="dropdown-menu-disable dropdown-primary">
+                    <ng-container *ngFor="let status of listStatusFilter">
+                        <div class="form-check">
+                            <input class="form-check-input" mdbInputDirective
+                             type="checkbox" id="status_{{status.status}}" 
+                             (click)="selectStatus($event, status)">
+                            <label class="form-check-label" 
+                            for="status_{{status.status}}">{{status.name}}</label>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+        <div class="issues-filter-item">
+            <div class="btn-group filter-group-item"
+            (clickOutside)="onClickedOutsideDropdown(assignee)" #assignee>
+                <button type="button" outline="true"
+                class="btn dropdown-toggle waves-dark filter-value" 
+                mdbWavesEffect (click)="showDropdown($event)">
+                    <label class="filter-label">Assignee: </label>{{assigneeFiltered.name}}
+                </button>
+                <div class="dropdown-menu-disable dropdown-primary">
+                    <ng-container *ngFor="let assignee of listAssignees">
+                        <div class="form-check">
+                            <input class="form-check-input" mdbInputDirective
+                             type="checkbox" id="assignee_{{assignee.id}}"
+                              (click)="selectAssigee($event, assignee)">
+                            <label class="form-check-label" 
+                            for="assignee_{{assignee.id}}">{{assignee.name}}</label>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+        <div class="issues-filter-item">
+            <input type="text" />
+        </div>
+
+        <!-- <div class="issues-filter-item">
+            <div class="btn-group filter-group-item" 
+            (clickOutside)="onClickedOutsideDropdown(status2)" #status2>
+                <button type="button" outline="true" class="btn btn-transparent dropdown-toggle waves-dark filter-value" mdbWavesEffect (click)="showDropdown($event)">
+                    <label class="filter-label">Status: </label>{{statusFiltered.name}}
+                </button>
+                <div class="dropdown-menu-disable dropdown-primary">
+                    <ng-container *ngFor="let status of listStatusFilter">
+                        <a class="dropdown-item" href="javascript:void(0);">{{status.name}}</a>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div class="issues-filter-item">
+            <label class="filter-label">Assignee: </label>
+            <div class="btn-group" mdbDropdown>
+                <button mdbDropdownToggle type="button" outline="true" class="btn btn-outline-primary dropdown-toggle waves-light filter-value"
+                    mdbWavesEffect>
+                    {{assigneeFiltered.name}}
+                </button>
+                <div class="dropdown-menu dropdown-primary">
+                    <ng-container *ngFor="let assignee of listAssignees">
+                        <a class="dropdown-item" href="javascript:void(0);">{{assignee.name}}</a>
+                    </ng-container>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="issues-filter-item issues-view">
+            <div class="btn-group" mdbDropdown>
+                <button mdbDropdownToggle type="button" outline="true" class="btn btn-outline-primary dropdown-toggle waves-light filter-value"
+                    mdbWavesEffect>
+                    <i class="material-icons" *ngIf="useListView">menu</i>
+                    <i class="material-icons" *ngIf="!useListView">vertical_split</i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                    <b class="">Views</b>
+                    <a class="dropdown-item" href="javascript:void(0);" (click)="useListView && changeView(false)">
+                        <i class="material-icons" [class.active]="!useListView">check</i>
+                        Detail View
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0);" (click)="!useListView && changeView(true)">
+                        <i class="material-icons" [class.active]="useListView">check</i>
+                        List View
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear-both"></div>
+    </div>
+
+    <div class="issues-list-container" #viewContainer>
+
+        <div class="issues-table list-view" *ngIf="useListView">
+            overview
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>T</th>
+                        <th class="can-sort" (click)="sortIssues(sortIssuesType == 'key-asc' ? 'key-desc': 'key-asc')">
+                            <span>Key</span>
+                            <i class="material-icons" *ngIf="sortIssuesType == 'key-desc'">arrow_downward</i>
+                            <i class="material-icons" *ngIf="sortIssuesType == 'key-asc'">arrow_upward</i>
+                        </th>
+                        <th>Summary</th>
+                        <th>Status</th>
+                        <th>Reporter</th>
+                        <th>Assignee</th>
+                        <th class="can-sort" (click)="sortIssues(sortIssuesType == 'created-asc' ? 'created-desc': 'created-asc')">
+                            <span>Created</span>
+                            <i class="material-icons" *ngIf="sortIssuesType == 'created-desc'">arrow_downward</i>
+                            <i class="material-icons" *ngIf="sortIssuesType == 'created-asc'">arrow_upward</i>
+                        </th>
+                        <th class="can-sort" (click)="sortIssues(sortIssuesType == 'updated-asc' ? 'updated-desc': 'updated-asc')">
+                            <span>Updated</span>
+                            <i class="material-icons" *ngIf="sortIssuesType == 'updated-desc'">arrow_downward</i>
+                            <i class="material-icons" *ngIf="sortIssuesType == 'updated-asc'">arrow_upward</i>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let issue of listIssues">
+                        <tr>
+                            <td>{{issue.type}}</td>
+                            <td>{{issue.key}}</td>
+                            <td>{{issue.summary}}</td>
+                            <td>{{issue.status}}</td>
+                            <td>{{issue.reporterName}}</td>
+                            <td>
+                                <ng-container *ngIf="issue.assigneeName">
+                                    {{issue.assigneeName}}
+                                </ng-container>
+                                <i *ngIf="!issue.assigneeName">Unassigneed</i>
+                            </td>
+                            <td>{{issue.createdDate | date: 'dd/MMM/yy' }}</td>
+                            <td>{{issue.updatedDate | date: 'dd/MMM/yy' }}</td>
+                            <td>
+                                <i class="material-icons action view">open_with</i>
+                                <i class="material-icons action delete">delete</i>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="issues-table detail-view" *ngIf="!useListView"
+        [style.max-height.px]="maxHeight">
+            <div class="issues-table-list">
+                filter
+                <div class="issues-list-items">
+                    <ng-container *ngFor="let issue of listIssues">
+                        <div class="issues-list-item" [class.issue-selected]="issueSelected && issueSelected.id == issue.id" (click)="showIssueDetails(issue)">
+                            <div class="title">
+                                <b>{{issue.type}}</b>
+                                <label>{{issue.key}}</label>
+                            </div>
+                            <div class="summary">
+                                {{issue.summary}}
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="issues-table-detail">
+                <app-project-issues-details [issue]="issueSelected">
+
+                </app-project-issues-details>
+            </div>
+        </div>
+    </div>
+</div>

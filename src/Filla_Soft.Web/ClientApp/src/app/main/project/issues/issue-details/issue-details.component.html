@@ -1,0 +1,176 @@
+<div class="issue-details-wrapper">
+    <div class="key-summary-actions">
+        <div class="key-summay">
+            <div class="issue-key">
+                {{issue.key}}
+            </div>
+            <div class="issue-summary">
+                {{issue.summary}}
+            </div>
+        </div>
+        <div class="issue-actions">
+            <!-- <button type="button" class="btn btn-outline-primary" mdbWavesEffect>
+                <i class="material-icons">edit</i>
+                Primary
+            </button> -->
+        </div>
+    </div>
+    <div class="issue-details-container">
+        <div class="issue-part-2">
+            <div class="issue-fieldset">
+                <div class="field-title">
+                    <b>Details</b>
+                    <button class="btn btn-dark-green btn-action btn-edit-details" 
+                    mdbWavesEffect *ngIf="!isChangeDetailMode"
+                    (click)="changeDetails()">
+                        Edit
+                    </button> 
+                    <button class="btn btn-danger btn-action btn-cancel-edit-details" 
+                    mdbWavesEffect *ngIf="isChangeDetailMode"
+                    (click)="changeDetails()">
+                        Cancel
+                    </button> 
+                    <button class="btn btn-success btn-action btn-save-edit-details" 
+                    mdbWavesEffect *ngIf="isChangeDetailMode"
+                    (click)="changeDetails()">
+                        Save
+                    </button> 
+                </div>
+                <div class="field-items">
+                    <div class="field-item field-50">
+                        <div class="field-name">Type:</div>
+                        <div class="field-value">
+                            <span *ngIf="!isChangeDetailMode">value</span>
+                            <div class="btn-group" mdbDropdown
+                            *ngIf="isChangeDetailMode">
+                                <button mdbDropdownToggle type="button"
+                                 class="btn btn-outline-primary dropdown-toggle waves-light" 
+                                 mdbWavesEffect>
+                                    Basic dropdown
+                                </button>
+                            
+                                <div class="dropdown-menu dropdown-primary">
+                                    <a class="dropdown-item" href="javascript:void(0);">Action</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Another action</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-both"></div>
+                    </div>
+                    <div class="field-item field-50">
+                        <div class="field-name">Status:</div>
+                        <div class="field-value">
+                                <span *ngIf="!isChangeDetailMode">value</span>
+                                <div class="btn-group" mdbDropdown
+                                *ngIf="isChangeDetailMode">
+                                    <button mdbDropdownToggle type="button"
+                                     class="btn btn-outline-primary dropdown-toggle waves-light" 
+                                     mdbWavesEffect>
+                                        Basic dropdown
+                                    </button>
+                                
+                                    <div class="dropdown-menu dropdown-primary">
+                                        <a class="dropdown-item" href="javascript:void(0);">Action</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Another action</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Something else here</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="clear-both"></div>
+                    </div>
+                    <div class="field-item">
+                        <div class="field-name">Proirity:</div>
+                        <div class="field-value">value</div>
+                        <div class="clear-both"></div>
+                    </div>
+                    <div class="field-item field-50">
+                        <div class="field-name">Type:</div>
+                        <div class="field-value">value</div>
+                        <div class="clear-both"></div>
+                    </div>
+                    <div class="field-item field-50">
+                        <div class="field-name">Status:</div>
+                        <div class="field-value">value</div>
+                        <div class="clear-both"></div>
+                    </div>
+                    <div class="clear-both"></div>
+                </div>
+            </div>
+
+            <div class="issue-fieldset">
+                <div class="field-title">
+                    <b>Description</b>
+                    <ng-container *ngIf="description && !isChangeDescriptionMode">
+                        <button class="btn btn-dark-green btn-action btn-edit-details" 
+                        mdbWavesEffect (click)="isChangeDescriptionMode = true">
+                            Edit
+                        </button> 
+                    </ng-container>
+                    <ng-container *ngIf="isChangeDescriptionMode">
+                        <button class="btn btn-danger btn-action btn-cancel-edit-details" 
+                        mdbWavesEffect>
+                            Cancel
+                        </button> 
+                        <button class="btn btn-success btn-action btn-save-edit-details" 
+                        mdbWavesEffect>
+                            Save
+                        </button> 
+                    </ng-container>
+                </div>
+                <div class="field-items">
+                    <div class="issue-has-description" *ngIf="description">
+                        <div *ngIf="!isChangeDescriptionMode">
+                            has description
+                        </div>
+                        <textarea *ngIf="isChangeDescriptionMode">has description</textarea>
+                    </div>
+                    <div class="issue-no-description" *ngIf="!description">
+                        <a href="javascript:void(0)" *ngIf="!isChangeDescriptionMode" 
+                        (click)="isChangeDescriptionMode = true">
+                            <i>Click to add desciption</i>
+                        </a>
+                        <textarea *ngIf="isChangeDescriptionMode"></textarea>
+                    </div>
+
+
+                    <div class="issue-no-description" *ngIf="!description && !isChangeDescriptionMode">
+                        <a href="javascript:void(0)" (click)="isChangeDescriptionMode = true">
+                            <i>Click to add desciption</i>
+                        </a>
+                    </div>
+                    <div class="issue-has-description" *ngIf="isChangeDescriptionMode">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="issue-fieldset">
+                <div class="field-title">
+                    <b>Attachments</b>
+                    <button class="btn btn-dark-green btn-action btn-edit-details" 
+                    mdbWavesEffect>
+                        <i class="material-icons icon-inside-button">add</i>
+                    </button>
+                </div>
+                <div class="field-items">
+
+                </div>
+            </div>
+        </div>
+        <div class="issue-part-1">
+            <div class="issue-fieldset">
+                <div class="field-title">
+                    <b>People</b>
+                </div>
+                <div class="field-items">
+                    <div class="field-item">
+                        <div class="field-name">name</div>
+                        <div class="field-value">value</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear-both"></div>
+    </div>
+</div>

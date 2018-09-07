@@ -1,0 +1,41 @@
+
+
+@mixin shadow-big-color($color){
+    // new box shadow optimized for Tablets and Phones
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, .14),
+                0 7px 10px -5px rgba($color, 0.4)
+}
+
+.btn-rounded {
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+}
+
+.btn-just-icon {
+    font-size: 24px;
+    height: 41px;
+    min-width: 41px;
+    width: 41px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    line-height: 41px;
+
+    .material-icons {
+        margin-top: 0;
+        position: absolute;
+        width: 100%;
+        -webkit-transform: none;
+        transform: none;
+        left: 0;
+        top: 0;
+        height: 100%;
+        line-height: 41px;
+        font-size: 20px;
+    }
+
+    &.btn-rounded {
+        border-radius: 50%;
+    }
+}

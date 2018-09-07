@@ -1,0 +1,75 @@
+.sidebar-wrapper {
+    overflow: hidden;
+    overflow-anchor: none;
+    -ms-overflow-style: none;
+    touch-action: auto;
+    -ms-touch-action: auto;
+
+    padding-top: 3.4375em;
+    height: calc(100vh);
+    font-weight: 400;
+
+    .nav {
+        margin-top: 10px;
+    }
+}
+
+.logo {
+    display: none;
+}
+
+.sidebar-wrapper {
+    .user {
+        padding-bottom: 20px;
+        margin: 20px auto 0;
+        position: relative;
+
+        .photo {
+            width: 34px;
+            height: 34px;
+            overflow: hidden;
+            float: left;
+            z-index: 5;
+            margin-right: 11px;
+            border-radius: 50%;
+            margin-left: 23px;
+            box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+            transition: all .3s linear;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        a {
+            color: #3c4858;
+            padding: .5rem 15px;
+            white-space: nowrap;
+        }
+
+        .user-info>a {
+            display: block;
+            line-height: 18px;
+            font-size: 14px;
+        }
+
+        // .collapse {
+        //     transition: height 0.35 ease;
+        //     display: block;
+        //     height: 0;
+        // }
+        // .collapse.show {
+        //     height: 150px;
+        // }
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 15px;
+            height: 1px;
+            width: calc(100% - 30px);
+            background-color: rgba(180,180,180,.3);
+        }
+    }
+}

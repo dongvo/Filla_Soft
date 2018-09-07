@@ -1,2 +1,10 @@
 
 .vs/Filla_Soft.Web/v15/.suo
+*.config
+.vs/Filla_Soft.Web/DesignTimeBuild/.dtbcache
+.vs/Filla_Soft/DesignTimeBuild/.dtbcache
+.vs/Filla_Soft/v15/.suo
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal

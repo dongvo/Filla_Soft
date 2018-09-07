@@ -1,0 +1,122 @@
+.btn-transparent:not(:hover) {
+    // &:not(:focus) {
+    background: transparent;
+    box-shadow: none;
+    // }
+}
+
+.issue-details-container {
+    .issue-part-2 {
+        width: 66.66%;
+        padding-right: 0.5em;
+        float: left;
+    }
+
+    .issue-part-1 {
+        width: 33.33%;
+        padding-left: 0.5em;
+        float: left;
+    }
+
+    .issue-fieldset {
+        margin-bottom: 2rem;
+    }
+
+    .field-title {
+        border-bottom: 1px solid #cecece;
+        // padding-left: 0.5em;
+        line-height: 2.5em;
+        font-weight: 500;
+    }
+
+    .field-items {
+        padding: 0.6em;
+        font-size: 0.875em;
+        font-weight: 400;
+        line-height: 2em;
+
+        .field-item {
+            display: block;
+            margin-bottom: 0.3rem;
+
+            .field-name {
+                float: left;
+                width: 25%;
+                color: #6f6f6f;
+                padding-right: 0.625em;
+            }
+
+            .field-value {
+                float: left;
+                width: 75%;
+                color: #000;
+                padding-right: 0.625em;
+            }
+
+            &.field-50 {
+                width: 50%;
+                float: left;
+
+                .field-name  {
+                    width: 50%;
+                }
+                .field-value {
+                    width: 50%;
+                }
+            }
+        }
+
+        .btn-group {
+            max-width: 100%;
+
+            .dropdown-toggle {
+                margin: 0px;
+                padding: 2px 4px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                text-transform: none;
+                overflow: hidden;
+                padding-right: 1rem;
+                border-width: 1px !important;
+                border-radius: 1px;
+
+                &::after {
+                    position: absolute;
+                    right: 0.25rem;
+                    top: 45%;
+                }
+            }
+
+            .dropdown-item {
+                font-size: 0.875rem;
+                padding: 3px 5px;
+                line-height: 1.25rem;
+            }
+        }
+    }
+}
+
+.btn-action {
+    color: inherit;
+    padding: 5px 8px;
+    margin: 0;
+    vertical-align: middle;
+    text-transform: initial;
+    float: right;
+    margin-top: 6px;
+
+    &.btn-edit-details {
+        
+    }
+
+    &.btn-save-edit-details {
+        margin-right: 0.3rem;
+    }
+}
+
+.icon-inside-button {
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+    vertical-align: sub;
+}
