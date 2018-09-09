@@ -5,11 +5,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
 export const routes: Routes =[
-    { path: '', component: HomeComponent, pathMatch: 'full' },
     { 
-        path: 'project',
-        loadChildren: './layouts/project-layout/project-layout.module#ProjectLayoutModule'
-    }
+      path: '', 
+      component: HomeComponent, 
+      pathMatch: 'full' 
+    },
+    { 
+      path: 'project',
+      loadChildren: './layouts/project-layout/project-layout.module#ProjectLayoutModule'
+    },
+    { 
+      path: 'manage',
+      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+    },
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
