@@ -1,0 +1,45 @@
+<div class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Projects list</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th (click)="sortProjectsListById()">ID</th>
+                                    <th>Name</th>
+                                    <th>Number of member</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let project of listProjectView">
+                                        <td>{{project.id}}</td>
+                                        <td>{{project.name}}</td>
+                                        <td>{{project.numberOfMember}}</td>
+                                        <td>
+                                            <ng-container *ngIf="project.isDeleted">
+                                                deleted
+                                            </ng-container>
+                                            <ng-container *ngIf="!project.isDeleted">
+                                                online
+                                            </ng-container>
+                                        </td>
+                                        <td class="text-primary">
+                                            view
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    </div>
+</div>

@@ -19,10 +19,12 @@ $bmd-checkbox-border-size: .0625rem !default;
 $bmd-checkbox-border-color: $bmd-label-color-inner-focus !default;
 $bmd-checkbox-border-color-disabled: $gray-lighter !default; //#bdbdbd !default;
 
-
+$white-color: #fff !default;
 $link-color: $brand-primary;
 $navbar-color: #555 !default;
 
+
+$white-transparent: rgba($white-color, .8);
 
 
 // Background colors

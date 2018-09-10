@@ -5,6 +5,11 @@
     0  8px 10px -5px rgba(0, 0, 0, $bmd-shadow-umbra-opacity);
 }
 
+@mixin shadow-big-image(){
+    // new box shadow optimized for Tables and Phones
+    box-shadow: 0 5px 15px -8px rgba(0, 0, 0, $bmd-shadow-ambient-opacity * 2),
+    0  8px 10px -5px rgba(0, 0, 0, $bmd-shadow-umbra-opacity);
+}
 
 
 @mixin shadow-small-color($color){

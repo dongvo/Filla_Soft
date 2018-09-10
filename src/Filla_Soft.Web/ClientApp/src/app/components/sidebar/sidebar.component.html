@@ -99,7 +99,9 @@
     </div>
     <ul class="nav">
         <ng-container *ngFor="let menuItem of menuItems">
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: menuItem.icon}" class="{{menuItem.class}} nav-item">
+            <li routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: menuItem.exact}" 
+                class="{{menuItem.class}} nav-item">
                 <a class="nav-link" [routerLink]="menuItem.path">
                     <i class="material-icons">{{menuItem.icon}}</i>
                     <p>{{menuItem.title}}</p>

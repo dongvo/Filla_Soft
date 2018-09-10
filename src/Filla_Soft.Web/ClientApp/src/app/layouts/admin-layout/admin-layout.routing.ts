@@ -6,7 +6,7 @@ export const AdminLayoutRoutes: Routes = [
     {
         path: '',
         component: AdminLayoutComponent,
-         children: [
+        children: [
             {
                 path: '',
                 loadChildren: './../../main/admin/dashboard/dashboard.module#AdminDashboardModule',

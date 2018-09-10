@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 //declare const $: any;
-declare interface RouteInfo {
+export interface RouteInfo {
     path: Array<string>;
     title: string;
     icon: string;
     class: string;
+    exact: boolean;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: ['/project'], title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: ['/project', 'board'], title: 'Board',  icon: 'assessment', class: '' },
+    { path: ['/project'], title: 'Dashboard',  icon: 'dashboard', class: '', exact: true },
+    { path: ['/project', 'board'], title: 'Board',  icon: 'assessment', class: '', exact: true },
     // { path: '/counter', title: 'Counter',  icon:'person', class: '' },
     // { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
     // { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
@@ -18,7 +19,7 @@ export const ROUTES: RouteInfo[] = [
     // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
     // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
     // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
-    { path: ['/project','issues'], title: 'Issues',  icon:'playlist_add_check', class: '' },
+    { path: ['/project','issues'], title: 'Issues',  icon:'playlist_add_check', class: '', exact: true },
 ];
 
 @Component({
@@ -27,7 +28,7 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  menuItems: any[];
+  @Input() menuItems: any[];
   projectId: any;
 
   constructor(
@@ -35,15 +36,15 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params =>{
-      let projectId: any = params['projectId'];
+    // this.route.params.subscribe(params =>{
+    //   let projectId: any = params['projectId'];
 
-      this.menuItems = [
-        { path: ['/project', projectId], title: 'Dashboard',  icon: 'dashboard', class: '' , exact: true},
-        { path: ['/project', projectId, 'board'], title: 'Board',  icon: 'assessment', class: '' , exact: true},
-        { path: ['/project', projectId, 'issues'], title: 'Issues',  icon:'playlist_add_check', class: '' , exact: false}
-      ]
-    })
+    //   this.menuItems = [
+    //     { path: ['/project', projectId], title: 'Dashboard',  icon: 'dashboard', class: '' , exact: true},
+    //     { path: ['/project', projectId, 'board'], title: 'Board',  icon: 'assessment', class: '' , exact: true},
+    //     { path: ['/project', projectId, 'issues'], title: 'Issues',  icon:'playlist_add_check', class: '' , exact: false}
+    //   ]
+    // })
     // this.menuItems = ROUTES.filter(menuItem => menuItem);
     
   }

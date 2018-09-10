@@ -24,7 +24,7 @@
                 <a class="simple-text logo-normal" href="https://www.google.com"> Filla Soft </a>
             </div>
             <!-- <a class="navbar-brand" href="#">{{getTitle()}}</a> -->
-            <div class="btn-group" mdbDropdown>
+            <div class="btn-group" mdbDropdown *ngIf="listProject && listProject.length > 0">
                 <button mdbDropdownToggle type="button" class="btn btn-transparent btn-sm dropdown-toggle" mdbWavesEffect>
                     {{activatedProject.name}}
                 </button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
@@ -10,38 +10,39 @@ import { AppCommonService } from '../../app-common.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+
+    @Input() listProject: Array<any> = [];
+
     private listTitles: any[];
     location: Location;
-      mobile_menu_visible: any = 0;
+    mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
 
     useSidebarMini: boolean = false;
 
-    listProject: Array<Project> = [];
-
-    activatedProject: Project;
+    activatedProject: any;
 
     constructor(location: Location,  private element: ElementRef, private router: Router,
         private appCommonService: AppCommonService) {
-      this.location = location;
-          this.sidebarVisible = false;
+        this.location = location;
+        this.sidebarVisible = false;
     }
 
     ngOnInit(){
-        this.getListProject();
         this.activatedProject = this.listProject[0];
         this.listTitles = ROUTES.filter(listTitle => listTitle);
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
         this.router.events.subscribe((event) => {
-        this.sidebarClose();
-         var $layer: any = document.getElementsByClassName('close-layer')[0];
-         if ($layer) {
-           $layer.remove();
-           this.mobile_menu_visible = 0;
-         }
-     });
+            this.sidebarClose();
+            var $layer: any = document.getElementsByClassName('close-layer')[0];
+            if ($layer) {
+                $layer.remove();
+                this.mobile_menu_visible = 0;
+            }
+        });
+        this.useSidebarMini = Boolean(this.appCommonService.currentNavOption);
     }
 
     sidebarOpen() {
@@ -141,18 +142,7 @@ export class NavbarComponent implements OnInit {
       }
       return 'Dashboard';
     }
-    
-    getListProject(): void {
-        this.listProject = [
-            {id: 1, name: 'Project 1'},
-            {id: 2, name: 'Project 2'},
-            {id: 3, name: 'Project 3'}
-        ]
-    }
+
 
 }
 
-export class Project {
-    id: number;
-    name: string;
-}
