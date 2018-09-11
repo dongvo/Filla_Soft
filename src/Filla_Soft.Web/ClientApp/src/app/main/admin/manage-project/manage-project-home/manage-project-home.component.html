@@ -8,12 +8,29 @@
                         <p class="card-category"> Here is a subtitle for this table</p>
                     </div>
                     <div class="card-body">
+                        <div class="table-filter">
+                            <div class="md-form">
+                                <input mdbInputDirective type="text" id="form1" class="form-control"
+                                [mdbValidate]="false"
+                                [(ngModel)]="searchValue" (ngModelChange)="searchProject()">
+                                <label for="form1" class="">Search by project name</label>
+                            </div>
+                        </div>
+
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead class=" text-primary">
-                                    <th (click)="sortProjectsListById()">ID</th>
-                                    <th>Name</th>
-                                    <th>Number of member</th>
+                                    <th>
+                                        <a class="cursor-pointer" 
+                                        (click)="sortProjectsListById()">ID <i class="fa fa-sort"></i></a>
+                                    </th>
+                                    <th>
+                                        <a  class="cursor-pointer"
+                                        (click)="sortProjectsListByName()">
+                                            Name <i class="fa fa-sort"></i>
+                                        </a>
+                                    </th>
+                                    <th>Number of member <i class="fa fa-sort"></i></th>
                                     <th>Status</th>
                                     <th></th>
                                 </thead>
@@ -24,14 +41,16 @@
                                         <td>{{project.numberOfMember}}</td>
                                         <td>
                                             <ng-container *ngIf="project.isDeleted">
-                                                deleted
+                                                <i class="fa fa-circle project-status-icon color-red"></i><span>deleted</span>
                                             </ng-container>
                                             <ng-container *ngIf="!project.isDeleted">
-                                                online
+                                                <i class="fa fa-circle project-status-icon color-green"></i><span>online</span>
                                             </ng-container>
                                         </td>
-                                        <td class="text-primary">
-                                            view
+                                        <td class="text-primary view-detail">
+                                            <a [routerLink]="[project.id]">
+                                                view
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>

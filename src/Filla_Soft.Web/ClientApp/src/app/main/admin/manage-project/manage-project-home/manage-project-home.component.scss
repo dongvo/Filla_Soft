@@ -1,0 +1,39 @@
+
+.table > thead > tr > th, 
+.table > tbody > tr > th, 
+.table > tfoot > tr > th, 
+.table > thead > tr > td, 
+.table > tbody > tr > td, 
+.table > tfoot > tr > td {
+    padding: 0.5rem 0.8rem;
+}
+
+.color-red {
+    color: red;
+}
+
+.color-green {
+    color: green;
+}
+
+.project-status-icon {
+    margin-right: 10px;
+}
+
+.view-detail {
+    a {
+        color: inherit;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    
+}
+
+.table-filter {
+    .md-form {
+        margin: 0;
+        margin-top: 0.5rem;
+    }
+}

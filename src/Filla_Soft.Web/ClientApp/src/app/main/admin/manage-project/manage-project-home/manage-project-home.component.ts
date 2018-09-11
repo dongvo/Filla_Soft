@@ -15,6 +15,8 @@ export class AdminManageProjectHomeComponent implements OnInit {
     listProjectView: Array<ProjectOverview>;
     listProjectSortType: string = '';
 
+    //search
+    searchValue: string = '';
     constructor(){
 
     }
@@ -37,7 +39,7 @@ export class AdminManageProjectHomeComponent implements OnInit {
             {
                 id: 2,
                 name: 'Peroject 2',
-                isDeleted: false,
+                isDeleted: true,
                 numberOfMember: 7
             },
             {
@@ -48,20 +50,21 @@ export class AdminManageProjectHomeComponent implements OnInit {
             },
             {
                 id: 4,
-                name: 'Peroject 4',
+                name: 'Peroject 1 asa',
                 isDeleted: false,
                 numberOfMember: 5
             }
         ]
 
         // this.listProjectView = JSON.parse(JSON.stringify(this.listProject));]
+        this.listProjectView = this.listProject;
         this.sortProjectsListById();
     }
 
     sortProjectsListById(): void {
         if ( this.listProjectSortType != ListProjectSortType.ID_ASC) {
             this.listProjectSortType = ListProjectSortType.ID_ASC;
-            this.listProjectView = this.listProject.sort( (a: ProjectOverview, b: ProjectOverview)=> {
+            this.listProjectView = this.listProjectView.sort( (a: ProjectOverview, b: ProjectOverview) => {
                 if (a.id < b.id) return -1;
                 else if (a.id > b.id) return 1;
                 else return 0;
@@ -69,11 +72,41 @@ export class AdminManageProjectHomeComponent implements OnInit {
         }
         else {
             this.listProjectSortType = ListProjectSortType.ID_DESC;
-            this.listProjectView = this.listProject.sort( (a: ProjectOverview, b: ProjectOverview)=> {
+            this.listProjectView = this.listProjectView.sort( (a: ProjectOverview, b: ProjectOverview) => {
                 if (a.id > b.id) return -1;
                 else if (a.id < b.id) return 1;
                 else return 0;
             });
+        }
+    }
+
+    sortProjectsListByName(): void {
+        if ( this.listProjectSortType != ListProjectSortType.NAME_ASC) {
+            this.listProjectSortType = ListProjectSortType.NAME_ASC;
+            this.listProjectView.sort( (a: ProjectOverview, b: ProjectOverview) => {
+                return ('' + a.name).localeCompare(b.name);
+            })
+        }
+        else {
+            this.listProjectSortType = ListProjectSortType.NAME_DESC;
+            this.listProjectView.sort( (a: ProjectOverview, b: ProjectOverview) => {
+                return ('' + b.name).localeCompare(a.name);
+            })
+        }
+    }
+
+
+    searchProject(): void {
+        console.log('sea')
+        if(this.searchValue == '') {
+            this.listProjectView = this.listProject;
+            this.listProjectSortType = '';
+            this.sortProjectsListById();
+        }
+        else {
+            this.listProjectView = this.listProject.filter((a) => {
+                return (a.name.toLocaleLowerCase().indexOf(this.searchValue.toLocaleLowerCase()) > -1);
+            })
         }
     }
 
