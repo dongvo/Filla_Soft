@@ -1,0 +1,11 @@
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\bin\Debug\netcoreapp2.1\Filla_Soft.Core.deps.json
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\bin\Debug\netcoreapp2.1\Filla_Soft.Core.dll
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\obj\Debug\netcoreapp2.1\Filla_Soft.Core.csproj.CoreCompileInputs.cache
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\obj\Debug\netcoreapp2.1\Filla_Soft.Core.AssemblyInfoInputs.cache
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\obj\Debug\netcoreapp2.1\Filla_Soft.Core.AssemblyInfo.cs
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\bin\Debug\netcoreapp2.1\Filla_Soft.Core.runtimeconfig.json
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\bin\Debug\netcoreapp2.1\Filla_Soft.Core.runtimeconfig.dev.json
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\bin\Debug\netcoreapp2.1\Filla_Soft.Core.pdb
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\obj\Debug\netcoreapp2.1\Filla_Soft.Core.csprojAssemblyReference.cache
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\obj\Debug\netcoreapp2.1\Filla_Soft.Core.dll
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Core\obj\Debug\netcoreapp2.1\Filla_Soft.Core.pdb

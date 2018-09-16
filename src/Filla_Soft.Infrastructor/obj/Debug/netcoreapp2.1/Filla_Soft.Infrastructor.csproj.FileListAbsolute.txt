@@ -1,0 +1,14 @@
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\bin\Debug\netcoreapp2.1\Filla_Soft.Core.dll
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\obj\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.csprojAssemblyReference.cache
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\obj\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.csproj.CoreCompileInputs.cache
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\obj\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.AssemblyInfoInputs.cache
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\obj\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.AssemblyInfo.cs
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\bin\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.deps.json
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\bin\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.runtimeconfig.json
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\bin\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.runtimeconfig.dev.json
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\bin\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.dll
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\bin\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.pdb
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\bin\Debug\netcoreapp2.1\Filla_Soft.Core.pdb
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\obj\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.csproj.CopyComplete
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\obj\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.dll
+E:\GIT\HOME_VISUAL_STUDIO\NET_CORE_21\Angular\Filla_Soft\src\Filla_Soft.Infrastructor\obj\Debug\netcoreapp2.1\Filla_Soft.Infrastructor.pdb

@@ -5,7 +5,14 @@ import { UtilityService } from "./services/utility.service";
 import { ClickOutsideDirective } from "./directives/click-outside.directive";
 
 //mdbootstrap
-import { InputsModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
+import { 
+    InputsModule, 
+    WavesModule, 
+    ButtonsModule, 
+    ModalModule, 
+    TooltipModule, 
+    PopoverModule 
+} from 'angular-bootstrap-md';
 
 @NgModule({
     imports:[
@@ -23,6 +30,9 @@ import { InputsModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
         InputsModule,
         WavesModule,
         ButtonsModule,
+        ModalModule, 
+        TooltipModule, 
+        PopoverModule,
 
         DisableDropdownToggleDirective,
         DisableDropdownDirective,

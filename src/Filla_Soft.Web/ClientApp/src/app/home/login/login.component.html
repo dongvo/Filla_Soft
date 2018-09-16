@@ -1,0 +1,63 @@
+<!-- login -->
+<!-- <button type="button" #buttonLogin mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Launch demo modal</button> -->
+
+<div class="login-wrapper">
+    <div mdbModal #basicModal="mdbModal" 
+        class="modal fade" 
+        tabindex="-1" 
+        role="dialog"
+        aria-labelledby="myBasicModalLabel"
+        aria-hidden="true"
+        [config]="{backdrop: true, ignoreBackdropClick: true}"
+        >
+        <div class="modal-dialog login" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                        <span aria-hidden="true">×</span>
+                    </button> -->
+                    <a class="modal-title" id="myModalLabel"><i class="fa fa-user mr-1"></i>Login</a>
+                </div>
+                <div class="modal-body mb-1">
+                    <form [formGroup]="formLogin" (ngSubmit)="login()" class="form">
+                        <div class="md-form form-sm">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input type="email" id="defaultForm-email" 
+                            formControlName="email" 
+                            class="form-control"
+                            autocomplete="off"
+                            [mdbValidate]="false"
+                            mdbInputDirective>
+                            <label for="defaultForm-email">Email</label>
+                            <!-- <span *ngIf="formLogin.hasError('pattern', 'email') && !formLogin.hasError('required', 'email')">
+                                Địa chỉ email không hợp lệ
+                            </span>
+                            <span *ngIf="formLogin.hasError('required', 'email')">
+                                Bạn không thể bỏ trống chỗ này
+                            </span> -->
+                        </div>
+                
+                        <div class="md-form form-sm">
+                            <i class="fa fa-lock prefix"></i>
+                            <input type="password" id="defaultForm-pass" 
+                            formControlName="password" 
+                            class="form-control" 
+                            autocomplete="off"
+                            data-error="Something went wrong..." 
+                            [validateSuccess]="false" 
+                            mdbInputDirective>
+                            <label for="defaultForm-pass">Password</label>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button class="btn btn-info waves-light" mdbWavesEffect>Login<i class="fa fa-sign-in ml-1"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+                    <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

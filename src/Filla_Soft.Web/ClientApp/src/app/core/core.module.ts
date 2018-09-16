@@ -4,9 +4,17 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslatePipe } from './translate.pipe';
-import { DataService } from './services/data.service';
 import { NotificationsModule } from './notifications';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
+import { 
+    AccountService, 
+    DataService, 
+    RoleService, 
+    LoginControlService
+} from './services';
+
+
 //import { WINDOW_PROVIDERS } from './services/window.service';
 
 // App level components
@@ -58,8 +66,10 @@ export class CoreModule {
         return {
             ngModule: CoreModule,
             providers: [
-                // AccountService,
+                AccountService,
                 DataService,
+                RoleService,
+                LoginControlService
                 // WINDOW_PROVIDERS
                 // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
                 // { provide: HTTP_INTERCEPTORS, useClass: TimingInterceptor, multi: true },

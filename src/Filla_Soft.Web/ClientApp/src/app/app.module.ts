@@ -17,6 +17,7 @@ import { AppCommonService } from './app-common.service';
 import { AppRoutingModule, routes } from './app.routing';
 import { CoreModule } from './core';
 import { SharedModule } from './shared/shared.module';
+import { LoginComponent } from './home/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SharedModule } from './shared/shared.module';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
+    LoginComponent
   ],
   imports: [
     BrowserAnimationsModule,
