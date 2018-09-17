@@ -8,6 +8,7 @@ using Filla_Soft.Core.ViewmModels.AccountViewModels;
 using Filla_Soft.Infrastructure.Services;
 using Filla_Soft.Web.Filters;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,26 @@ namespace Filla_Soft.Web.Controllers.api
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private IHostingEnvironment _env;
+        private readonly RoleManager<ApplicationRole> _roleManager;
+
+        public AccountController(
+            UserManager<ApplicationUser> userManager,
+            IOptions<IdentityOptions> identityOptions,
+            SignInManager<ApplicationUser> signInManager,
+            IEmailSender emailSender,
+            ILoggerFactory loggerFactory,
+            IHostingEnvironment env,
+            RoleManager<ApplicationRole> roleManager)
+        {
+            _userManager = userManager;
+            _identityOptions = identityOptions;
+            _signInManager = signInManager;
+            _emailSender = emailSender;
+            _logger = loggerFactory.CreateLogger<AccountController>();
+            _env = env;
+            _roleManager = roleManager;
+        }
 
         [HttpPost("login")]
         [AllowAnonymous]

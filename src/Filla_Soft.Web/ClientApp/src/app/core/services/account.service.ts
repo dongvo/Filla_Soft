@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { DataService } from "./data.service";
 import { BehaviorSubject, Observable } from "rxjs";
 import { RoleService } from "./role.service";
+import { LoginModel, User } from "../models";
 
 
 @Injectable()
@@ -28,10 +29,28 @@ export class AccountService {
         });
     }
 
+    public loginRegular(model: LoginModel): Observable<any> {
+        // console.log(this.isLoggedIn);
+        return this.dataService.post<any>('/api/account/login', model);
+    }
+
 
     clearUserData() {
         this._userProfileData.next(null);
         this.roleService.setRole(new Array<string>());
+    }
+
+    setSession(user: User, profile?: any) {
+        if(user) {
+            // if(profile) {
+            //     this.profile = profile;
+            // }
+            // this.isLoggedIn = true;
+            // this.userInfo = user;
+            this._userProfileData.next(user);
+            this.roleService.setRole(user.roles);
+            //this.redirectAfterLogin(user);
+        }
     }
 
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { LoginControlService } from '../../core/services';
+import { LoginControlService, AccountService } from '../../core/services';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { EmailRegExp, PasswordRegExp } from '../../core/custom.validator';
+import { LoginModel } from '../../core/models';
 
 @Component({
     selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     constructor(
         private _formBuilder: FormBuilder,
-        private loginControl: LoginControlService
+        private loginControl: LoginControlService,
+        private accountService: AccountService
     ){
 
     }
@@ -48,5 +50,20 @@ export class LoginComponent implements OnInit, AfterViewInit {
         })
     }
 
+    login(): void {
+        if(this.formLogin.valid) {
+            let loginModel: LoginModel = new LoginModel();
+            loginModel.email = this.formLogin.get('email').value;
+            loginModel.password = this.formLogin.get('password').value;
+            this.accountService.loginRegular(loginModel).subscribe( res => {
+                // console.log(res);
+                let success: boolean = Boolean(res['succeed']);
+                
+                
+            }, error =>{
+                alert('co loi xay ra');
+            })
+        }
+    }
 
 }

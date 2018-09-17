@@ -17,14 +17,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.accountService.onLoginSuccess.subscribe(res => {
-      if(res) {
+    // this.accountService.onLoginSuccess.subscribe(res => {
+    //   if(res) {
 
-      }
-      else {
-        this.loginControl.openLogin();
-      }
-    })
+    //   }
+    //   else {
+    //     this.loginControl.openLogin();
+    //   }
+    // })
   }
 
 }
