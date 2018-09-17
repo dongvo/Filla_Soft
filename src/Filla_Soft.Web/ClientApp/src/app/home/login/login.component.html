@@ -26,7 +26,8 @@
                             formControlName="email" 
                             class="form-control"
                             autocomplete="off"
-                            [mdbValidate]="false"
+                            [errorMessage]="'error'" [successMessage]="'Custom success message'"
+                            [validateSuccess]="false" 
                             mdbInputDirective>
                             <label for="defaultForm-email">Email</label>
                             <!-- <span *ngIf="formLogin.hasError('pattern', 'email') && !formLogin.hasError('required', 'email')">
@@ -43,7 +44,7 @@
                             formControlName="password" 
                             class="form-control" 
                             autocomplete="off"
-                            data-error="Something went wrong..." 
+                            [errorMessage]="'erro ar'" [successMessage]="'Custom success message'"
                             [validateSuccess]="false" 
                             mdbInputDirective>
                             <label for="defaultForm-pass">Password</label>

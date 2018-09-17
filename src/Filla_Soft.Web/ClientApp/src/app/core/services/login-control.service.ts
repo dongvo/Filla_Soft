@@ -6,9 +6,6 @@ export class LoginControlService {
     private _isOpenLogin = new BehaviorSubject<boolean>(false);
     isOpenLogin = this._isOpenLogin.asObservable();
 
-    private _isOpenRegister = new BehaviorSubject<boolean>(false);
-    isOpenRegister = this._isOpenRegister.asObservable();
-
     constructor(
 
     ) {
@@ -19,7 +16,7 @@ export class LoginControlService {
         this._isOpenLogin.next(true);
     }
 
-    openRegister(): void {
-        this._isOpenLogin.next(true);
+    closeLogin(): void {
+        this._isOpenLogin.next(false);
     }
 }

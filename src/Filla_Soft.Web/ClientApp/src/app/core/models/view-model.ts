@@ -9,9 +9,6 @@ export class User {
     email: string;
     birthDay: Date;
     gender: number;
-    phoneNumber: string;
-    isReceivePromotion: boolean;
-
+    genderName: string;
     roles: string[];
-    supplierId?: number;
 }

@@ -84,25 +84,11 @@ namespace Filla_Soft.Web.Controllers.api
             bool isLogin = this.HttpContext.User.Identity.IsAuthenticated;
             if (isLogin)
             {
-                var user = await _userManager.GetUserAsync(HttpContext.User);
+                var user = await GetCurrentUserAsync();
                 var roles = await _userManager.GetRolesAsync(user);
 
                 //get role user in project
-                
-                return Ok(new
-                {
-                    IsLoggedIn = isLogin,
-                    User = new
-                    {
-                        Id = user.Id,
-                        FullName = user.Name,
-                        Email = user.Email,
-                        BirthDay = user.BirthDay,
-                        Gender = user.Gender,
-                        GenderName = user.GenderName
-                    },
-                    Roles = roles
-                });
+                return AppUtil.SignIn(user, roles);
             }
 
             return Ok(new { IsLoggedIn = isLogin });

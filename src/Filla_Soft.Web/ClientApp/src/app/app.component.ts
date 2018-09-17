@@ -34,8 +34,7 @@ this.checkLogin();
     this.accountService.checkLoggedIn().subscribe( res => {
       if( res && Boolean(res['isLoggedIn'])) {
         let user: any = res['user'];
-        user.roles = res['roles'];
-        this.accountService.setSession(user, res['profile']);
+        this.accountService.setSession(user);
       }
       else {
         this.loginControl.openLogin();

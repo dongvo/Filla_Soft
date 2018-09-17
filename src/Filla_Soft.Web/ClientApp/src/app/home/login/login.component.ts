@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
                 Validators.pattern(PasswordRegExp)
             ])
         });
+        this.formLogin.valueChanges.subscribe(res => {
+            console.log(res)
+        })
     }
 
     ngAfterViewInit(): void {
@@ -56,10 +59,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
             loginModel.email = this.formLogin.get('email').value;
             loginModel.password = this.formLogin.get('password').value;
             this.accountService.loginRegular(loginModel).subscribe( res => {
-                // console.log(res);
-                let success: boolean = Boolean(res['succeed']);
-                
-                
+                let user: any = res['user'];
+                this.accountService.setSession(user);
+                this.loginModal.hide();
             }, error =>{
                 alert('co loi xay ra');
             })

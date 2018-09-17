@@ -16,5 +16,7 @@ namespace Filla_Soft.Core.Helpers
 
         public const string CHANGE_PASSSWORD_SUCCESSFULLY = "CHANGE_PASSSWORD_SUCCESSFULLY";
 
+        public const string LOGOUT_SUCCESSFULLY = "LOGOUT_SUCCESSFULLY";
+
     }
 }

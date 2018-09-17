@@ -9,7 +9,21 @@ namespace Filla_Soft.Web.Controllers.api
     {
         internal static IActionResult SignIn(ApplicationUser user, IList<string> roles)
         {
-            var userResult = new { User = new { DisplayName = user.UserName, Roles = roles } };
+            var userResult = new
+            {
+                IsLoggedIn = true,
+                User = new
+                {
+                    Id = user.Id,
+                    FullName = user.Name,
+                    Email = user.Email,
+                    BirthDay = user.BirthDay,
+                    Gender = user.Gender,
+                    GenderName = user.GenderName,
+                    Roles = roles
+                }
+            };
+            //var userResult = new { User = new { DisplayName = user.UserName, Roles = roles } };
             return new ObjectResult(userResult);
         }
 

@@ -13,12 +13,20 @@ import {
     TooltipModule, 
     PopoverModule 
 } from 'angular-bootstrap-md';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     imports:[
         InputsModule,
         WavesModule,
-        ButtonsModule
+        ButtonsModule,
+        ModalModule, 
+        TooltipModule, 
+        PopoverModule,
+
+
+        FormsModule, 
+        ReactiveFormsModule
     ],
     declarations: [
         DisableDropdownToggleDirective,
@@ -33,6 +41,9 @@ import {
         ModalModule, 
         TooltipModule, 
         PopoverModule,
+
+        FormsModule, 
+        ReactiveFormsModule,
 
         DisableDropdownToggleDirective,
         DisableDropdownDirective,

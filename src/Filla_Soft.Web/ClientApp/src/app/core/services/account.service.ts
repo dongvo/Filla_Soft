@@ -40,13 +40,8 @@ export class AccountService {
         this.roleService.setRole(new Array<string>());
     }
 
-    setSession(user: User, profile?: any) {
+    setSession(user: User) {
         if(user) {
-            // if(profile) {
-            //     this.profile = profile;
-            // }
-            // this.isLoggedIn = true;
-            // this.userInfo = user;
             this._userProfileData.next(user);
             this.roleService.setRole(user.roles);
             //this.redirectAfterLogin(user);

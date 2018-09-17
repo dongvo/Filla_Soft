@@ -50,7 +50,7 @@ namespace Filla_Soft.Infrastructor
             if (!_context.ApplicationUsers.Any())
             {
                 var adminUser = new ApplicationUser { UserName = "admin@admin.com", FirstName = "Admin first", LastName = "Admin last", Email = "admin@admin.com", PhoneNumber = "0123456789", EmailConfirmed = true }; //, IsEnabled = true };
-                _userManager.CreateAsync(adminUser, "P@ssw0rd!").Result.ToString();
+                _userManager.CreateAsync(adminUser, "admin1234").Result.ToString();
                 //_userManager.AddClaimAsync(adminUser, new Claim(OpenIdConnectConstants.Claims.PhoneNumber, adminUser.Mobile.ToString(), ClaimValueTypes.Integer)).Result.ToString();
                 _userManager.AddToRoleAsync(_userManager.FindByNameAsync("admin@admin.com").GetAwaiter().GetResult(), "Admin").Result.ToString();
 
