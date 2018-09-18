@@ -4,10 +4,13 @@ import { AccountService, LoginControlService } from '../core/services';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls:[
+    './home.component.scss'
+  ]
 })
 export class HomeComponent implements OnInit {
 
-  hasLoggedIn: boolean = false;
+  isLoggedIn: boolean = false;
 
   constructor(
     private accountService: AccountService,
@@ -17,14 +20,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.accountService.onLoginSuccess.subscribe(res => {
-    //   if(res) {
-
-    //   }
-    //   else {
-    //     this.loginControl.openLogin();
-    //   }
-    // })
+    this.accountService.onLoginSuccess.subscribe(res => {
+      if(res) {
+        this.isLoggedIn = true;
+      }
+      else {
+        this.isLoggedIn = false;
+      }
+    })
   }
 
 }

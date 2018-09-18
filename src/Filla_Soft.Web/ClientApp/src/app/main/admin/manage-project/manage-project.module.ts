@@ -8,6 +8,8 @@ import { AdminManageProjectHomeComponent } from './manage-project-home/manage-pr
 import { AdminManageProjectDetailComponent } from './manage-project-detail/manage-project-detail.component';
 import { routes } from './manage-project.routing';
 import { SharedModule } from '../../../shared/shared.module';
+import { ManageProjectService } from './manage-project.service';
+import { AdminManageProjectNewComponent } from './manage-project-new/manage-project-new.component';
 
 @NgModule({
     imports: [
@@ -19,13 +21,14 @@ import { SharedModule } from '../../../shared/shared.module';
     declarations: [
         AdminManageProjectComponent,
         AdminManageProjectHomeComponent,
-        AdminManageProjectDetailComponent
+        AdminManageProjectDetailComponent,
+        AdminManageProjectNewComponent
     ],
     exports: [
 
     ],
     providers: [
-
+        ManageProjectService
     ]
 })
 export class AdminManageProjectModule { }

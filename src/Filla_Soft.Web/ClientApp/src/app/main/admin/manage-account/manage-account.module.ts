@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AdminManageAccountComponent } from './manage-account.component';
+import { ManageAccountService } from './manage-account.service';
 
 @NgModule({
     imports: [
@@ -19,7 +20,7 @@ import { AdminManageAccountComponent } from './manage-account.component';
 
     ],
     providers: [
-
+        ManageAccountService
     ]
 })
 export class AdminManageAccountModule { }

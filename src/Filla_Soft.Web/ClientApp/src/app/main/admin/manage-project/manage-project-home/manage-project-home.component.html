@@ -4,8 +4,15 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Projects list</h4>
-                        <p class="card-category"> Here is a subtitle for this table</p>
+                        <div class="table-title">
+                            <h4 class="card-title ">Projects list</h4>
+                            <p class="card-category"> Here is a subtitle for this table</p>
+                        </div>
+                        <button class="btn btn-amber waves-light btn-new-project" mdbWavesEffect
+                        (click)="addNewproject()">
+                            <i class="fa fa-plus-square"></i>
+                            Add new project
+                        </button>
                     </div>
                     <div class="card-body">
                         <div class="table-filter">

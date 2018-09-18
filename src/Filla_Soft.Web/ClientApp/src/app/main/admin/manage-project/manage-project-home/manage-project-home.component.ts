@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectOverview } from '../manage-project.models';
+import { ProjectOverview, ListProjectSortType } from '../manage-project.models';
+import { ManageProjectService } from '../manage-project.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'admin-manage-project-home',
@@ -17,12 +19,20 @@ export class AdminManageProjectHomeComponent implements OnInit {
 
     //search
     searchValue: string = '';
-    constructor(){
+    
+    constructor(
+        private manageProjectService: ManageProjectService,
+        private router: Router
+    ){
 
     }
 
     ngOnInit(): void {
+        if(this.manageProjectService.listProjectSortType) {
+            this.listProjectSortType = this.manageProjectService.listProjectSortType;
+        }
         this.getListProject();
+        this.sortProjectList();
     }
 
     getListProject(): void {
@@ -58,7 +68,11 @@ export class AdminManageProjectHomeComponent implements OnInit {
 
         // this.listProjectView = JSON.parse(JSON.stringify(this.listProject));]
         this.listProjectView = this.listProject;
+    }
+
+    sortProjectList(): void {
         this.sortProjectsListById();
+        this.manageProjectService.listProjectSortType = this.listProjectSortType;
     }
 
     sortProjectsListById(): void {
@@ -97,7 +111,6 @@ export class AdminManageProjectHomeComponent implements OnInit {
 
 
     searchProject(): void {
-        console.log('sea')
         if(this.searchValue == '') {
             this.listProjectView = this.listProject;
             this.listProjectSortType = '';
@@ -110,11 +123,8 @@ export class AdminManageProjectHomeComponent implements OnInit {
         }
     }
 
-}
 
-const ListProjectSortType: any = {
-    ID_ASC: 'id_asc',
-    ID_DESC: 'id_desc',
-    NAME_ASC: 'name_asc',
-    NAME_DESC: 'name_desc'
+    addNewproject(): void {
+        this.router.navigate(['/manage','project','new'])
+    }
 }

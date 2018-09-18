@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
                 let user: any = res['user'];
                 this.accountService.setSession(user);
                 this.loginModal.hide();
+                this.loginControl.closeLogin();
             }, error =>{
                 alert('co loi xay ra');
             })
