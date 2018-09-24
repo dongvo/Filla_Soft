@@ -49,11 +49,47 @@ namespace Filla_Soft.Web.Controllers.api
         [HttpGet("accounts")]
         public async Task<IActionResult> GetAllAccount()
         {
-            return Ok(new
+            var currUser = await GetCurrentUserAsync();
+            var roles = await _userManager.GetRolesAsync(currUser);
+            if (roles.Any(r => r.ToLower() == "admin")) {
+                List<UserModel> lstUser = new List<UserModel>();
+                foreach (var user in _userManager.Users)
+                {
+                    if(user != currUser)
+                        lstUser.Add(new UserModel
+                        {
+                            Email = user.Email,
+                            CreatedDate = user.CreatedDate,
+                            FirstName = user.FirstName,
+                            Gender = user.Gender,
+                            LastName = user.LastName,
+                            LastUpdate = user.LastUpdate
+                        });
+                }
+
+                return Ok(new
+                {
+                    Result = lstUser
+                });
+            }
+            else
             {
-                Result = _userManager.Users
-            });
+
+                return Ok(new
+                {
+                    Result = _userManager.Users
+                });
+            }
+            
         }
+
+        #region Helpers
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
+        }
+
+        #endregion
 
     }
 }

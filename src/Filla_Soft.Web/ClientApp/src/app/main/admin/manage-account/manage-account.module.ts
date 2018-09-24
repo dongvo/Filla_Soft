@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AdminManageAccountComponent } from './manage-account.component';
 import { ManageAccountService } from './manage-account.service';
+import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -11,7 +12,8 @@ import { ManageAccountService } from './manage-account.service';
         FormsModule,
         RouterModule.forChild([
             { path: '', component: AdminManageAccountComponent, pathMatch: 'full' },
-        ])
+        ]),
+        SharedModule
     ],
     declarations: [
         AdminManageAccountComponent

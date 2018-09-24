@@ -8,3 +8,7 @@
 *.ide
 *.ide-shm
 *.ide-wal
+src/Filla_Soft.Core/bin/
+src/Filla_Soft.Infrastructor/bin/
+src/Filla_Soft.Core/obj/
+src/Filla_Soft.Infrastructor/obj/
