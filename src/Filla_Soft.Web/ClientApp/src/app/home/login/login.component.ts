@@ -5,6 +5,7 @@ import { EmailRegExp, PasswordRegExp } from '../../core/custom.validator';
 import { LoginModel } from '../../core/models';
 import { IssueState } from '../../shared/consts/message.const';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SimpleNotificationsService } from '../../core/notifications';
 
 @Component({
     selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     constructor(
         private _formBuilder: FormBuilder,
         private loginControl: LoginControlService,
-        private accountService: AccountService
+        private accountService: AccountService,
+        private simpleNotificationService: SimpleNotificationsService
     ){
 
     }
@@ -69,8 +71,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
                 this.loginModal.hide();
                 this.loginControl.closeLogin();
             }, (error: HttpErrorResponse) =>{
-                let message =  error.error["message"];
-                this.errorMessage = IssueState[message];
+                let message =  IssueState[error.error["message"]];
+                this.simpleNotificationService.error("Login fail", message)
             })
         }
     }

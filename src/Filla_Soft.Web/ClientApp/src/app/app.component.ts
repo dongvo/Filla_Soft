@@ -14,6 +14,12 @@ export class AppComponent implements OnInit {
 
   useSidebarMini: boolean = false;
 
+  simpleNotificationOptions: any = {
+    position: ['top', 'right'],
+    timeOut: 5000,
+    lastOnBottom: true
+  };
+
   constructor(
     private appCommonService: AppCommonService,
     private accountService: AccountService,

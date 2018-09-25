@@ -10,8 +10,8 @@ namespace Filla_Soft.Core
 
     public enum Gender
     {
-        Men = 1,
-        Women = 2,
+        Male = 1,
+        FeMale = 2,
         None = 0
     }
 }
