@@ -19,6 +19,7 @@
                     <a class="modal-title" id="myModalLabel"><i class="fa fa-user mr-1"></i>Login</a>
                 </div>
                 <div class="modal-body mb-1">
+                    <!-- <div class="alert alert-danger error" *ngIf="errorMessage">{{errorMessage}}</div> -->
                     <form [formGroup]="formLogin" (ngSubmit)="login()" class="form">
                         <div class="md-form form-sm">
                             <i class="fa fa-envelope prefix"></i>

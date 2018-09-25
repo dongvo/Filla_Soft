@@ -3,6 +3,8 @@ import { LoginControlService, AccountService } from '../../core/services';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { EmailRegExp, PasswordRegExp } from '../../core/custom.validator';
 import { LoginModel } from '../../core/models';
+import { IssueState } from '../../shared/consts/message.const';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-login',
@@ -16,6 +18,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     @ViewChild('basicModal') loginModal: any
     
     formLogin: FormGroup;
+
+    errorMessage: string;
 
     // loginFormModalEmail = new FormControl('', Validators.email);
     // loginFormModalPassword = new FormControl('', Validators.required);
@@ -54,6 +58,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
 
     login(): void {
+        this.errorMessage = "";
         if(this.formLogin.valid) {
             let loginModel: LoginModel = new LoginModel();
             loginModel.email = this.formLogin.get('email').value;
@@ -63,8 +68,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
                 this.accountService.setSession(user);
                 this.loginModal.hide();
                 this.loginControl.closeLogin();
-            }, error =>{
-                alert('co loi xay ra');
+            }, (error: HttpErrorResponse) =>{
+                let message =  error.error["message"];
+                this.errorMessage = IssueState[message];
             })
         }
     }

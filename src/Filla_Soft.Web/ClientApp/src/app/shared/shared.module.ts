@@ -11,7 +11,8 @@ import {
     ButtonsModule, 
     ModalModule, 
     TooltipModule, 
-    PopoverModule 
+    PopoverModule, 
+    NavbarModule
 } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
@@ -41,6 +42,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         ModalModule, 
         TooltipModule, 
         PopoverModule,
+        NavbarModule,
 
         FormsModule, 
         ReactiveFormsModule,

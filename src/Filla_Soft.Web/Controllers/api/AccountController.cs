@@ -71,7 +71,7 @@ namespace Filla_Soft.Web.Controllers.api
                     {
                         return BadRequest(new ApiError(ErrorState.USER_IS_NOT_CONFIRM));
                     }
-                    return BadRequest(new ApiError(ErrorState.PASSWOR_WRONG));
+                    return BadRequest(new ApiError(ErrorState.PASSWORD_WRONG));
                 }
             }
         }
