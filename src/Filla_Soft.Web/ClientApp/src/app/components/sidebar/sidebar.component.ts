@@ -8,6 +8,7 @@ export interface RouteInfo {
     icon: string;
     class: string;
     exact: boolean;
+    routeChild?: RouteInfo[];
 }
 export const ROUTES: RouteInfo[] = [
     { path: ['/project'], title: 'Dashboard',  icon: 'dashboard', class: '', exact: true },
@@ -19,7 +20,12 @@ export const ROUTES: RouteInfo[] = [
     // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
     // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
     // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
-    { path: ['/project','issues'], title: 'Issues',  icon:'playlist_add_check', class: '', exact: true },
+    { 
+      path: ['/project','issues'], title: 'Issues',  icon:'playlist_add_check', class: '', exact: true,
+      routeChild :[
+        { path: ['/project','issues'], title: 'child',  icon:'playlist_add_check', class: '', exact: true }
+      ]
+    },
 ];
 
 @Component({

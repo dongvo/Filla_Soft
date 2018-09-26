@@ -19,8 +19,8 @@
                 <img src="/assets/img/faces/marc.jpg">
             </div>
             <div class="user-info">
-                <a class="collapsed" data-toggle="collapse" data-taget="#collapseExample"
-                 href="javascript:void(0);" (click)="toggleCollapse()">
+                <a class="collapsed" data-toggle="collapse" data-taget="#collapseExample" href="javascript:void(0);"
+                    (click)="toggleCollapse()">
                     <span> Anderson
                         <b class="caret"></b>
                     </span>
@@ -72,7 +72,8 @@
                 </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">notifications</i>
                     <span class="notification">5</span>
                     <p>
@@ -99,14 +100,34 @@
     </div>
     <ul class="nav">
         <ng-container *ngFor="let menuItem of menuItems">
-            <li routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: menuItem.exact}" 
-                class="{{menuItem.class}} nav-item">
-                <a class="nav-link" [routerLink]="menuItem.path">
-                    <i class="material-icons">{{menuItem.icon}}</i>
-                    <p>{{menuItem.title}}</p>
-                </a>
-            </li>
+            <ng-container *ngIf="!menuItem.routeChild || menuItem.routeChild.length == 0">
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: menuItem.exact}" class="{{menuItem.class}} nav-item">
+                    <a class="nav-link" [routerLink]="menuItem.path">
+                        <i class="material-icons">{{menuItem.icon}}</i>
+                        <p>{{menuItem.title}}</p>
+                    </a>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="menuItem.routeChild && menuItem.routeChild.length > 0">
+                <li  class="{{menuItem.class}} nav-item">
+                    <a class="nav-link" [routerLink]="menuItem.path">
+                        <i class="material-icons">{{menuItem.icon}}</i>
+                        <p>{{menuItem.title}}<b class="caret"></b></p>
+                    </a>
+                    <div class="collapse show">
+                        <ul class="nav">
+                            <li class="nav-item" routerLinkActive="active"
+                            *ngFor="let child of menuItem.routeChild">
+                                <a class="nav-link" [routerLink]="child.path">
+                                    <span class="sidebar-mini">B</span>
+                                    <span class="sidebar-normal">{{child.title}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ng-container>
+            
         </ng-container>
     </ul>
 </div>

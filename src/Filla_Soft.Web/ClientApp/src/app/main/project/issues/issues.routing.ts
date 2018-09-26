@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { IssuesComponent } from './issues.component';
 import { IssueListComponent } from './issue-list/issue-list.component';
+import { IssueSettingComponent } from './issue-settings/issue-setting.component';
 
 
 export const IssuesRoutes: Routes = [
@@ -11,8 +12,18 @@ export const IssuesRoutes: Routes = [
             {
                 path: '',
                 pathMatch: 'full', 
+                redirectTo: 'list'
+            },
+            {
+                path: 'list',
+                //pathMatch: 'full', 
                 component: IssueListComponent,
                 data: { state: 'issue-list' }
+            },
+            {
+                path: 'setting',
+                component: IssueSettingComponent,
+                data: { state: 'issue-setting' }
             }
         ]
     }
