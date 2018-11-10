@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Filla_Soft.Core.ViewmModels.AccountViewModels
+namespace Filla_Soft.Core.ViewModels.AccountViewModels
 {
     public class LoginViewModel
     {

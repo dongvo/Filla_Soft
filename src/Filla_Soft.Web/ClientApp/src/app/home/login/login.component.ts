@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             let loginModel: LoginModel = new LoginModel();
             loginModel.email = this.formLogin.get('email').value;
             loginModel.password = this.formLogin.get('password').value;
+            
             this.accountService.loginRegular(loginModel).subscribe( res => {
                 let user: any = res['user'];
                 this.accountService.setSession(user);

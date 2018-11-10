@@ -5,6 +5,7 @@ import { RouterModule } from "@angular/router";
 import { HomeComponent } from "./home.component";
 import { LoginComponent } from "./login/login.component";
 import { HomeNavComponent } from "./nav/nav.component";
+import { MDBBootstrapModule } from "angular-bootstrap-md";
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { HomeNavComponent } from "./nav/nav.component";
                 component: HomeComponent
             }
         ]),
-
+        MDBBootstrapModule.forRoot(),
         SharedModule
     ],
     declarations:[

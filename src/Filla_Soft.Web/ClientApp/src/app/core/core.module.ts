@@ -11,7 +11,8 @@ import {
     AccountService, 
     DataService, 
     RoleService, 
-    LoginControlService
+    LoginControlService,
+    CanActivateTeam
 } from './services';
 
 
@@ -69,7 +70,8 @@ export class CoreModule {
                 AccountService,
                 DataService,
                 RoleService,
-                LoginControlService
+                LoginControlService,
+                CanActivateTeam
                 // WINDOW_PROVIDERS
                 // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
                 // { provide: HTTP_INTERCEPTORS, useClass: TimingInterceptor, multi: true },

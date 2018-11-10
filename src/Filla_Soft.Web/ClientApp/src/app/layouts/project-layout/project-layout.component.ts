@@ -32,12 +32,13 @@ export class ProjectLayoutComponent {
       
             this.menuItems = [
               { path: ['/project', projectId], title: 'Dashboard',  icon: 'dashboard', class: '' , exact: true},
-              { path: ['/project', projectId, 'board'], title: 'Board',  icon: 'assessment', class: '' , exact: true},
+              //{ path: ['/project', projectId, 'board'], title: 'Board',  icon: 'assessment', class: '' , exact: true},
               {
                 path: ['/project', projectId, 'issues'], title: 'Issues',  icon:'playlist_add_check', class: '' , exact: false,
                 routeChild :[
-                  { path: ['/project', projectId, 'issues', 'list'], title: 'List',  icon:'playlist_add_check', class: '' , exact: true },
-                  { path: ['/project', projectId, 'issues', 'setting'], title: 'Setting',  icon:'playlist_add_check', class: '' , exact: true }
+                  { path: ['/project', projectId, 'issues', 'list'], title: 'List',  icon:'playlist_add_check', class: '' , acronyms: 'L', exact: true },
+                  { path: ['/project', projectId, 'issues', 'board'], title: 'Board',  icon:'playlist_add_check', class: '' , acronyms: 'B', exact: true },
+                  { path: ['/project', projectId, 'issues', 'setting'], title: 'Setting',  icon:'playlist_add_check', class: '' , acronyms: 'S', exact: true }
                 ]
               }
             ]

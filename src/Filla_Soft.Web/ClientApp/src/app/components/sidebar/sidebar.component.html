@@ -119,7 +119,7 @@
                             <li class="nav-item" routerLinkActive="active"
                             *ngFor="let child of menuItem.routeChild">
                                 <a class="nav-link" [routerLink]="child.path">
-                                    <span class="sidebar-mini">B</span>
+                                    <span class="sidebar-mini" *ngIf="child.acronyms">{{child.acronyms}}</span>
                                     <span class="sidebar-normal">{{child.title}}</span>
                                 </a>
                             </li>

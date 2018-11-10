@@ -41,6 +41,7 @@ namespace Filla_Soft.Web
             services.AddCustomDbContext();
 
             services.AddCustomIdentity();
+
             services.ConfigureApplicationCookie(options=>
             {
              //   options.AccessDeniedPath = "/Identity/Account/AccessDenied";

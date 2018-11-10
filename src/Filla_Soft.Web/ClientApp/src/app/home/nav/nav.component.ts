@@ -1,4 +1,5 @@
 import  { Component } from '@angular/core';
+import { AccountService } from 'app/core/services';
 
 @Component({
     selector: 'app-home-nav',
@@ -9,5 +10,13 @@ import  { Component } from '@angular/core';
 })
 
 export class HomeNavComponent {
-    
+    constructor (
+        private accountService: AccountService
+    ){
+        
+    }
+
+    logout(): void {
+        this.accountService.logout();
+    }
 }

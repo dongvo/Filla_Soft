@@ -10,6 +10,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { IssueDetailsComponent } from './issue-details/issue-details.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { IssueSettingComponent } from './issue-settings/issue-setting.component';
+import { IssueBoardComponent } from './issue-board/issue-board.component';
 
 
 
@@ -24,6 +25,7 @@ import { IssueSettingComponent } from './issue-settings/issue-setting.component'
     declarations:[
         IssuesComponent,
         IssueListComponent,
+        IssueBoardComponent,
         IssueCreateComponent,
         IssueDetailsComponent,
         IssueSettingComponent

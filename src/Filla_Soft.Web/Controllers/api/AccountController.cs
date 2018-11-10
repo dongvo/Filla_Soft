@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Filla_Soft.Core.Entities;
 using Filla_Soft.Core.Helpers;
-using Filla_Soft.Core.ViewmModels.AccountViewModels;
+using Filla_Soft.Core.ViewModels.AccountViewModels;
 using Filla_Soft.Infrastructure.Services;
 using Filla_Soft.Web.Filters;
 using Microsoft.AspNetCore.Authorization;
@@ -19,6 +19,7 @@ namespace Filla_Soft.Web.Controllers.api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AccountController : ControllerBase
     {
         private readonly IOptions<IdentityOptions> _identityOptions;
@@ -76,6 +77,17 @@ namespace Filla_Soft.Web.Controllers.api
             }
         }
 
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            bool isLogin = this.HttpContext.User.Identity.IsAuthenticated;
+            if (isLogin)
+            {
+                await _signInManager.SignOutAsync();
+                return Ok(new ApiSuccess(ResultLabels.LOGOUT_SUCCESSFULLY));
+            }
+            return BadRequest(new ApiError(ErrorState.EMAIL_NOT_REGISTER));
+        }
 
         [HttpGet("checkloggedin")]
         [AllowAnonymous]
@@ -92,6 +104,27 @@ namespace Filla_Soft.Web.Controllers.api
             }
 
             return Ok(new { IsLoggedIn = isLogin });
+        }
+
+        [HttpPost("ForgotPassword")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword([FromBody]ForgotPasswordViewModel model)
+        {
+            var currentUser = await _userManager.FindByNameAsync(model.Email);
+            if (currentUser == null || !(await _userManager.IsEmailConfirmedAsync(currentUser)))
+            {
+                // Don't reveal that the user does not exist or is not confirmed
+                return NoContent();
+            }
+            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
+            // Send an email with this link
+            var code = await _userManager.GeneratePasswordResetTokenAsync(currentUser);
+
+            var host = Request.Scheme + "://" + Request.Host;
+            var callbackUrl = host + "?userId=" + currentUser.Id + "&passwordResetCode=" + code;
+            var confirmationLink = "<a class='btn-primary' href=\"" + callbackUrl + "\">Reset your password</a>";
+            await _emailSender.SendEmailAsync(model.Email, "Forgotten password email", confirmationLink);
+            return NoContent(); // sends 204
         }
 
         #region Helpers

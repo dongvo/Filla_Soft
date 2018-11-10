@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { CanActivateTeam } from './core/services';
 
 export const routes: Routes =[
     { 
@@ -11,7 +12,8 @@ export const routes: Routes =[
     },
     { 
       path: 'project',
-      loadChildren: './layouts/project-layout/project-layout.module#ProjectLayoutModule'
+      loadChildren: './layouts/project-layout/project-layout.module#ProjectLayoutModule',
+      canActivate: [CanActivateTeam]
     },
     { 
       path: 'manage',

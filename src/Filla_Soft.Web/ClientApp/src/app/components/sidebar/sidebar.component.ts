@@ -8,6 +8,7 @@ export interface RouteInfo {
     icon: string;
     class: string;
     exact: boolean;
+    acronyms?: string;
     routeChild?: RouteInfo[];
 }
 export const ROUTES: RouteInfo[] = [

@@ -1,4 +1,9 @@
 
+export class NewProjectViewModel {
+    name: string;
+    member: Array<number> = new Array();
+}
+
 export class ProjectOverview {
     id: number;
     name: string;

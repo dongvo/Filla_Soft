@@ -3,6 +3,7 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
 import { AppCommonService } from '../../app-common.service';
+import { AccountService } from 'app/core/services';
 
 @Component({
   selector: 'app-navbar',
@@ -23,8 +24,12 @@ export class NavbarComponent implements OnInit {
 
     activatedProject: any;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router,
-        private appCommonService: AppCommonService) {
+    constructor(location: Location, 
+        private element: ElementRef, 
+        private router: Router,
+        private appCommonService: AppCommonService,
+        private accountService: AccountService
+    ) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -43,6 +48,10 @@ export class NavbarComponent implements OnInit {
             }
         });
         this.useSidebarMini = Boolean(this.appCommonService.currentNavOption);
+    }
+
+    logout(): void {
+        this.accountService.logout();
     }
 
     sidebarOpen() {

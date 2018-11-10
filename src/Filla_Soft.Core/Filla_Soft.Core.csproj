@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="ViewmModels\ManageViewModels\" />
+    <Folder Include="ViewModels\ManageViewModels\" />
   </ItemGroup>
 
 </Project>

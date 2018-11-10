@@ -66,3 +66,17 @@
 .main-panel .main-content {
   padding-bottom: 0;
 }
+
+.btn-transparent {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.navbar .collapse .navbar-nav .nav-item .nav-link.btn-group {
+  padding: 0;
+  text-transform: none;
+
+  .btn {
+    padding: 10px 15px;
+  }
+}

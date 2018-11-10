@@ -45,7 +45,7 @@
         }
     }
     
-    .sidebar-wrapper{
+    .sidebar-wrapper {
         position: relative;
         height: calc(100vh - 75px);
         overflow: auto;
@@ -53,6 +53,27 @@
         z-index: 4;
 
         padding-bottom: 30px;
+
+        > .nav div > ul > li > a .sidebar-mini {
+            text-transform: uppercase;
+            width: 30px;
+            margin-right: 15px;
+            text-align: center;
+            letter-spacing: 1px;
+            position: relative;
+            float: left;
+            display: inherit;
+        }
+
+        >.nav div>ul>li>a .sidebar-normal {
+            margin: 0;
+            position: relative;
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            opacity: 1;
+            white-space: nowrap;
+            display: block;
+        }
 
     }
 
@@ -347,8 +368,8 @@
             }
 
             .sidebar-wrapper{
-                > .nav [data-toggle="collapse"] ~ div > ul > li > a .sidebar-normal,
-                .user .user-info [data-toggle="collapse"] ~ div > ul > li > a .sidebar-normal,
+                > .nav div > ul > li > a .sidebar-normal,
+                .user .user-info  div > ul > li > a .sidebar-normal,
                 .user .user-info > a > span,
                 > .nav li > a p{
                     @include transform-translate-x(-25px);
@@ -369,10 +390,9 @@
 
             .sidebar-wrapper{
                 width: 260px;
-
                 > .nav li > a p,
-                > .nav [data-toggle="collapse"] ~ div > ul > li > a .sidebar-normal,
-                .user .user-info [data-toggle="collapse"] ~ div > ul > li > a .sidebar-normal,
+                > .nav div > ul > li > a .sidebar-normal,
+                .user .user-info div > ul > li > a .sidebar-normal,
                 .user .user-info > a > span{
                     @include transform-translate-x(0px);
                     opacity: 1;

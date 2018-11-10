@@ -75,60 +75,7 @@ export class IssueListComponent implements OnInit, AfterViewInit {
                 status: 4, type: 3, createdDate: new Date(2018, 1, 8), updatedDate: new Date(2018, 1, 3),
                 reporterID: 'asc',
                 reporterName: 'nguyen van B'
-            },
-            {
-                id: 6, key: 'PR-6', summary: 'test issue 6', status: 4, type: 1, 
-                createdDate: new Date(2018, 1, 19), updatedDate: new Date(2018, 1, 3),
-                reporterID: 'asc',
-                reporterName: 'nguyen van B'
-            },
-            {
-                id: 7, key: 'PR-7', summary: 'test issue 7', status: 1, type: 2, 
-                createdDate: new Date(2018, 1, 21), updatedDate: new Date(2018, 1, 3),
-                reporterID: 'asc',
-                reporterName: 'nguyen van B'
-            },
-            {
-                id: 8, key: 'PR-8', summary: 'test issue 8', status: 2, type: 3, 
-                createdDate: new Date(2018, 1, 12), updatedDate: new Date(2018, 1, 3),
-                reporterID: 'asc',
-                reporterName: 'nguyen van B'
-            },
-            {   
-                id: 9, key: 'PR-9', summary: 'test issue 9', status: 3, type: 2, 
-                createdDate: new Date(2018, 1, 12), updatedDate: new Date(2018, 1, 3),
-                reporterID: 'asc',
-                reporterName: 'nguyen van B'
-            },
-            {
-                id: 10, key: 'PR-10', summary: 'test issue 1', status: 2, type: 1, 
-                createdDate: new Date(2018, 1, 1), updatedDate: new Date(2018, 1, 3),
-                reporterID: 'asc',
-                reporterName: 'nguyen van B'
-            },
-            {
-                id: 11, key: 'PR-11', summary: 'test issue 2', status: 1, type: 2, 
-                createdDate: new Date(2018, 1, 2), updatedDate: new Date(2018, 1, 3),
-                reporterID: 'asc',
-                reporterName: 'nguyen van B'
-            },
-            {
-                id: 12, key: 'PR-12', summary: 'test issue 3', status: 2, type: 3, 
-                createdDate: new Date(2018, 1, 7), updatedDate: new Date(2018, 1, 3),
-                reporterID: 'asc',
-                reporterName: 'nguyen van B'
-            },
-            {
-                id: 13, key: 'PR-13', summary: 'test issue 4', status: 3, type: 4,
-                 createdDate: new Date(2018, 1, 4), updatedDate: new Date(2018, 1, 3),
-                 reporterID: 'asc',
-                reporterName: 'nguyen van B'
             }
-            // {id: 14, key: 'PR-14', summary: 'test issue 5', status: 4, type: 3, createdDate: new Date(2018, 1, 8), updatedDate: new Date(2018, 1, 3)},
-            // {id: 15, key: 'PR-15', summary: 'test issue 6', status: 4, type: 1, createdDate: new Date(2018, 1, 19), updatedDate: new Date(2018, 1, 3)},
-            // {id: 16, key: 'PR-16', summary: 'test issue 7', status: 1, type: 2, createdDate: new Date(2018, 1, 21), updatedDate: new Date(2018, 1, 3)},
-            // {id: 17, key: 'PR-17', summary: 'test issue 8', status: 2, type: 3, createdDate: new Date(2018, 1, 12), updatedDate: new Date(2018, 1, 3)},
-            // {id: 18, key: 'PR-18', summary: 'test issue 9', status: 3, type: 2, createdDate: new Date(2018, 1, 12), updatedDate: new Date(2018, 1, 3)}
         ];
 
         this.issues = JSON.parse(JSON.stringify(this.listIssues));
@@ -142,14 +89,6 @@ export class IssueListComponent implements OnInit, AfterViewInit {
             {id: 5, name: 'nguyen van E'},
         ];
         
-        // this.assigneeFilters = [
-        //     {id: 0, name: 'All'},
-        //     {id: 1, name: 'nguyen van A'},
-        //     {id: 2, name: 'nguyen van B nguyen van B'},
-        //     {id: 3, name: 'nguyen van C'},
-        //     {id: 4, name: 'nguyen van D'},
-        //     {id: 5, name: 'nguyen van E'},
-        // ];
 
         this.assigneeFiltered = this.listAssignees.find(a=>a.id == 0);
 
@@ -161,13 +100,6 @@ export class IssueListComponent implements OnInit, AfterViewInit {
             { status: 4, name: 'DDDD'}
         ];
 
-        // this.statusFilters = [
-        //     { status: 0, name: 'All'},
-        //     { status: 1, name: 'AAAA'},
-        //     { status: 2, name: 'BBBB'},
-        //     { status: 3, name: 'CCCC'},
-        //     { status: 4, name: 'DDDD'}
-        // ];
 
         this.statusFiltered = this.listStatusFilter.find(status=>status.status == 0);
 

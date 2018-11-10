@@ -38,12 +38,21 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="material-icons">person</i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                  </p>
-                </a>
+                  <a class="nav-link btn-group" mdbDropdown>
+                      <button mdbDropdownToggle type="button" class="btn btn-transparent btn-sm dropdown-toggle" mdbWavesEffect>
+                          <i class="material-icons">person</i>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                          <a class="dropdown-item" href="javascript:void(0)">
+                              <i class="material-icons">account_box</i>
+                              <span>My profile</span>
+                          </a>
+                          <a class="dropdown-item" href="javascript:void(0)" (click)="logout()">
+                              <i class="material-icons">exit_to_app</i>
+                              <span>Logout</span>
+                          </a>
+                      </div>
+                  </a>
               </li>
             </ul>
           </div>
