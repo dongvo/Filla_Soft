@@ -1,4 +1,3 @@
-
 <div class="manage-project-new-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -19,8 +18,36 @@
                         <div class="card-icon">New project</div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            asdc
+                        <form [formGroup]="formAddProject" (ngSubmit)="save()" class="form-horizontal">
+                            <div class="row">
+                                <label class="col-md-3 col-2 col-form-label">Name</label>
+                                <div class="col-md-9 col-10 md-form">
+                                    <input type="text" id="defaultForm-email" 
+                                    formControlName="name" class="form-control"
+                                        autocomplete="off" [errorMessage]="'Required'"
+                                        [validateSuccess]="false" 
+                                        mdbInputDirective>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <label class="col-md-3 col-2 col-form-label">Description</label>
+                                <div class="col-md-9 col-10 md-form">
+                                    <input type="text" id="defaultForm-email" 
+                                    formControlName="description" class="form-control"
+                                        autocomplete="off" [validateSuccess]="false" 
+                                        mdbInputDirective>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer ">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <button type="submit" (click)="save()" class="btn btn-fill btn-rose waves-light btn-save" mdbWavesEffect>Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>

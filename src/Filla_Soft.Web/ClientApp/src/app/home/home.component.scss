@@ -4,3 +4,24 @@
     min-height: calc(100vh - 3.4375em);
 }
 
+.home-wrapper {
+    padding: 2em 0;
+}
+
+.home-menu {
+    ul {
+        padding: 0;
+        list-style: none;
+
+        li {
+            a {
+                display: block;
+                margin-left: 0;
+                margin-right:  0;
+                padding: 0.5rem;
+                text-align: left;
+                text-transform: none;
+            }
+        }
+    }
+}

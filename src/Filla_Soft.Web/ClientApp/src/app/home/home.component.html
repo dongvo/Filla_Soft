@@ -1,11 +1,51 @@
 <app-home-nav *ngIf="isLoggedIn"></app-home-nav>
 <div class="main-content">
-  <h1 *ngIf="!isLoggedIn">You must be login</h1>
-  <h1>Hello, world!</h1>
-  <p>Welcome to your new single-page application, built with:</p>
-  <button class=" btn btn-danger waves-light" mdbWavesEffect>text</button>
-  <a [routerLink]="['/project/1']">project</a>
-  <a [routerLink]="['/manage']">manage</a>
-  <a [routerLink]="['/manage', 'project']">project</a>
+  <div class="home-wrapper" *ngIf="isLoggedIn">
+    <div class="container" *ngIf="isAdmin && !isUser">
+      <div class="row">
+        <div class="col-lg-2 col-md-3 home-menu">
+          <ul>
+            <li>
+              <a [routerLink]="['/manage']" class="waves-light" mdbBtn type="button" color="cyan" mdbWavesEffect>
+                <i class="material-icons">ballot</i>
+                <span>Manager</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/manage', 'project']"
+               class="waves-light" mdbBtn type="button" color="cyan" mdbWavesEffect>
+               <i class="material-icons">art_track</i>
+               <span>Manage project</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-10 col-md-9">
+          <app-home-boards></app-home-boards>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <div class="row" *ngIf="!isAdmin && isUser">
+          <div class="col-lg-12 col-12">
+              <app-home-boards></app-home-boards>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      sas
+      <h1 *ngIf="!isLoggedIn">You must be login</h1>
+      <h1>Hello, world!</h1>
+      <p>Welcome to your new single-page application, built with:</p>
+      <button class=" btn btn-danger waves-light" mdbWavesEffect>text</button>
+      <a [routerLink]="['/project/1']">project</a>
+      <a [routerLink]="['/manage']">manage</a>
+
+    </div>
+  </div>
 </div>
 <app-login></app-login>

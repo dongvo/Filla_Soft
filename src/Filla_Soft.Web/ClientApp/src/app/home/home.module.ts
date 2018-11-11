@@ -6,6 +6,7 @@ import { HomeComponent } from "./home.component";
 import { LoginComponent } from "./login/login.component";
 import { HomeNavComponent } from "./nav/nav.component";
 import { MDBBootstrapModule } from "angular-bootstrap-md";
+import { HomeBoardsComponent } from "./boards/boards.component";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MDBBootstrapModule } from "angular-bootstrap-md";
     declarations:[
         HomeComponent,
         LoginComponent,
-        HomeNavComponent
+        HomeNavComponent,
+        HomeBoardsComponent
     ],
     exports: [
 

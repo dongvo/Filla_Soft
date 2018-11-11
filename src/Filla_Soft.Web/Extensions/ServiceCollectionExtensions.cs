@@ -13,6 +13,9 @@ using Filla_Soft.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Filla_Soft.Infrastructor.Providers;
 using Filla_Soft.Providers.Options;
+using Filla_Soft.Infrastructor.Services;
+using Filla_Soft.Infrastructor.Repositories.Abstract;
+using Filla_Soft.Infrastructor.Repositories;
 
 namespace Filla_Soft.Web.Extensions
 {
@@ -92,7 +95,7 @@ namespace Filla_Soft.Web.Extensions
             // Add framework services.
             services.AddDbContextPool<AccountDbContext>(options =>
             {
-                var connection = Startup.Configuration["Connections:AccountConnectionString"];
+                var connection = Startup.Configuration["ConnectionStrings:AccountConnectionString"];
                 options.UseSqlServer(connection);
                 options.UseSqlServer(connection, b => b.MigrationsAssembly("Filla_Soft.Web"));
             });
@@ -111,6 +114,8 @@ namespace Filla_Soft.Web.Extensions
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
             services.AddTransient<AccountDbContext>();
             services.AddTransient<UserResolverService>();
+            services.AddTransient<IProjectRepository, ProjectRepository>();
+            services.AddTransient<ProjectService>();
             services.AddScoped<ApiExceptionFilter>();
 
             return services;

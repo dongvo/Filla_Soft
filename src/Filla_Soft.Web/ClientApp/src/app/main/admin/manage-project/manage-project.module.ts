@@ -10,13 +10,15 @@ import { routes } from './manage-project.routing';
 import { SharedModule } from '../../../shared/shared.module';
 import { ManageProjectService } from './manage-project.service';
 import { AdminManageProjectNewComponent } from './manage-project-new/manage-project-new.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         SharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        MDBBootstrapModule.forRoot()
     ],
     declarations: [
         AdminManageProjectComponent,

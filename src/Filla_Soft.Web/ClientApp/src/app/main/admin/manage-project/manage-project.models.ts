@@ -1,6 +1,7 @@
 
 export class NewProjectViewModel {
     name: string;
+    description: string;
     member: Array<number> = new Array();
 }
 
