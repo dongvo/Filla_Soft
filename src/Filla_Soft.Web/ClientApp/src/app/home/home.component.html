@@ -18,17 +18,24 @@
                <span>Manage project</span>
               </a>
             </li>
+            <li>
+              <a [routerLink]="['/manage', 'account']"
+               class="waves-light" mdbBtn type="button" color="cyan" mdbWavesEffect>
+               <i class="material-icons">account_box</i>
+               <span>Manage account</span>
+              </a>
+            </li>
           </ul>
         </div>
         <div class="col-lg-10 col-md-9">
-          <app-home-boards></app-home-boards>
+          <app-home-boards [projects]="projects" [canCreateProject]="true"></app-home-boards>
         </div>
       </div>
     </div>
     <div class="container">
         <div class="row" *ngIf="!isAdmin && isUser">
           <div class="col-lg-12 col-12">
-              <app-home-boards></app-home-boards>
+              <app-home-boards [projects]="projects" [canCreateProject]="false"></app-home-boards>
           </div>
         </div>
       </div>

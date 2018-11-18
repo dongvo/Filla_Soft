@@ -1,1 +1,18 @@
-hasasas
+
+<div class="row row-fix">
+    <ng-container *ngFor="let project of projects">
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-fix">
+            <a [routerLink]="['/project', project.id]"
+            class="project-item">
+                <div>{{project.name}}</div>
+            </a>
+        </div>
+    </ng-container>
+    
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-fix" *ngIf="canCreateProject">
+        <a [routerLink]="['/manage', 'project', 'new']"
+        class="project-item new-project">
+            <div>Create new project</div>
+        </a>
+    </div>
+</div>

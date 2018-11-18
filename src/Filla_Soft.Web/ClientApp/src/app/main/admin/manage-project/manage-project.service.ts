@@ -20,4 +20,8 @@ export class ManageProjectService {
             Description: description
         });
     }
+
+    getProject(): Observable<any> {
+        return this.dataService.get('/api/ManageProject/GetAllProject');
+    }
 }

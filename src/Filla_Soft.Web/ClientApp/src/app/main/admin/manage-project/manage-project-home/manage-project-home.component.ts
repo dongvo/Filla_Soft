@@ -32,42 +32,19 @@ export class AdminManageProjectHomeComponent implements OnInit {
             this.listProjectSortType = this.manageProjectService.listProjectSortType;
         }
         this.getListProject();
-        this.sortProjectList();
     }
 
     getListProject(): void {
         this.listProject = new Array();
         this.listProjectView = new Array();
 
-        this.listProject = [
-            {
-                id: 1,
-                name: 'Peroject 1',
-                isDeleted: false,
-                numberOfMember: 6
-            },
-            {
-                id: 2,
-                name: 'Peroject 2',
-                isDeleted: true,
-                numberOfMember: 7
-            },
-            {
-                id: 3,
-                name: 'Peroject 3',
-                isDeleted: false,
-                numberOfMember: 4
-            },
-            {
-                id: 4,
-                name: 'Peroject 1 asa',
-                isDeleted: false,
-                numberOfMember: 5
+        this.manageProjectService.getProject().subscribe(res => {
+            if(res && res['success'] && res['result']){
+                this.listProject = res['result']['projects'];
             }
-        ]
-
-        // this.listProjectView = JSON.parse(JSON.stringify(this.listProject));]
-        this.listProjectView = this.listProject;
+            this.listProjectView = this.listProject;
+            this.sortProjectList();
+        });
     }
 
     sortProjectList(): void {
@@ -76,7 +53,7 @@ export class AdminManageProjectHomeComponent implements OnInit {
     }
 
     sortProjectsListById(): void {
-        if ( this.listProjectSortType != ListProjectSortType.ID_ASC) {
+        if (this.listProjectSortType == '' || this.listProjectSortType != ListProjectSortType.ID_ASC) {
             this.listProjectSortType = ListProjectSortType.ID_ASC;
             this.listProjectView = this.listProjectView.sort( (a: ProjectOverview, b: ProjectOverview) => {
                 if (a.id < b.id) return -1;

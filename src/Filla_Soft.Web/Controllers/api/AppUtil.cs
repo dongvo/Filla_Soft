@@ -7,7 +7,7 @@ namespace Filla_Soft.Web.Controllers.api
 {
     public class AppUtil
     {
-        internal static IActionResult SignIn(ApplicationUser user, IList<string> roles)
+        internal static IActionResult SignIn(ApplicationUser user, IList<string> roles, object data)
         {
             var userResult = new
             {
@@ -21,7 +21,8 @@ namespace Filla_Soft.Web.Controllers.api
                     Gender = user.Gender,
                     GenderName = user.GenderName,
                     Roles = roles
-                }
+                },
+                Data = data
             };
             //var userResult = new { User = new { DisplayName = user.UserName, Roles = roles } };
             return new ObjectResult(userResult);

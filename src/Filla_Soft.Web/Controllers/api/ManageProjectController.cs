@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Filla_Soft.Core.Models;
 using Filla_Soft.Core.ViewModels.ManageProjectViewModels;
 using Filla_Soft.Infrastructor.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +13,7 @@ namespace Filla_Soft.Web.Controllers.api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class ManageProjectController : ControllerBase
     {
         private readonly ProjectService _projectService;
@@ -29,6 +32,17 @@ namespace Filla_Soft.Web.Controllers.api
             return Ok(new
             {
 
+            });
+        }
+
+        [HttpGet("GetAllProject")]
+        public IActionResult GetAllProject()
+        {
+            List<ProjectOverview> result = _projectService.GetALlProject();
+
+            return AppUtil.Success(new
+            {
+                projects = result
             });
         }
     }

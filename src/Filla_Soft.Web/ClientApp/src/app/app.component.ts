@@ -40,7 +40,7 @@ this.checkLogin();
     this.accountService.checkLoggedIn().subscribe( res => {
       if( res && Boolean(res['isLoggedIn'])) {
         let user: any = res['user'];
-        this.accountService.setSession(user);
+        this.accountService.setSession(user, res['data']);
       }
       else {
         this.loginControl.openLogin();

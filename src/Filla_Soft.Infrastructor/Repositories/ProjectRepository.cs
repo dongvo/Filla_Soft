@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using Dapper;
+using Filla_Soft.Core.Models;
 
 namespace Filla_Soft.Infrastructor.Repositories
 {
@@ -18,7 +19,7 @@ namespace Filla_Soft.Infrastructor.Repositories
         {
             using (IDbConnection dbConnection = ProjectConnection)
             {
-                var reader = dbConnection.Execute("spProjectInsert", new
+                dbConnection.Execute("spProjectInsert", new
                 {
                     Name = name,
                     Description = description
@@ -27,5 +28,34 @@ namespace Filla_Soft.Infrastructor.Repositories
             return true;
         }
 
+        public List<Project> GetAssignedProject(int accountId, bool isAdmin)
+        {
+            List<Project> result;
+
+            using(IDbConnection dbConnection = ProjectConnection)
+            {
+                var reader = dbConnection.Query<Project>("spProjectSelectAssigned", new
+                {
+                    AccountId = accountId,
+                    IsAdmin = isAdmin
+                }, commandType: CommandType.StoredProcedure);
+                result = new List<Project>(reader);
+            }
+
+            return result;
+        }
+
+        public List<ProjectOverview> GetAllProject()
+        {
+            List<ProjectOverview> result;
+
+            using (IDbConnection dbConnection = ProjectConnection)
+            {
+                var reader = dbConnection.Query<ProjectOverview>("spProjectSelectAll", commandType: CommandType.StoredProcedure);
+                result = new List<ProjectOverview>(reader);
+            }
+
+            return result;
+        }
     }
 }

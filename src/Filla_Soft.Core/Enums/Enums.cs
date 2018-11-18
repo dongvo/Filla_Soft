@@ -14,4 +14,13 @@ namespace Filla_Soft.Core
         FeMale = 2,
         None = 0
     }
+
+    public sealed class Roles
+    {
+        private Roles() { }
+
+        public static readonly string Admin = "Admin";
+        public static readonly string User = "User";
+    }
+    
 }

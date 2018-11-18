@@ -1,0 +1,53 @@
+
+.row-fix {
+    margin-left: -0.3125rem;
+    margin-right: -0.3125rem;
+}
+
+.col-fix {
+    padding-left: 0.3125rem;
+    padding-right: 0.3125rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-item {
+    display: block;
+    padding: 0.6rem;
+    background-color: rgba(41, 179, 241, 1);
+    border-radius: 0.15rem;
+    font-weight: 500;
+    color: #fff;
+    height: 5rem;
+    transition-property: background-color,border-color,box-shadow;
+    transition-duration: 85ms;
+    transition-timing-function: ease;
+
+    &:hover {
+        background-color: rgba(41, 179, 241, 0.75);
+    }
+
+    div {
+        max-height: 3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+    }
+}
+
+.new-project {
+    background-color: rgba(9,45,66, 0.08);
+    color: #6b808c;
+    font-weight: 400;
+
+    &:hover {
+        background-color: rgba(9,45,66, 0.15);
+    }
+
+    div {
+        height: 100%;
+        text-align: center;
+        vertical-align: middle;
+    }
+}

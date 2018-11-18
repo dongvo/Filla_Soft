@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService, LoginControlService, RoleService } from '../core/services';
+import { Project } from 'app/app.models';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   isUser: boolean = false;
 
+  projects: Array<Project> = new Array();
   
 
   constructor(
@@ -43,6 +45,13 @@ export class HomeComponent implements OnInit {
       }
       else {
         this.isLoggedIn = false;
+      }
+    });
+
+    this.accountService.projectsData.subscribe(res => {
+      if(res) {
+        console.log(res);
+        this.projects = res['projects'] || new Array();
       }
     })
   }

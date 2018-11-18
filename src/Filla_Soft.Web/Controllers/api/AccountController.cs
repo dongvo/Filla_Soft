@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Filla_Soft.Core.Entities;
 using Filla_Soft.Core.Helpers;
 using Filla_Soft.Core.ViewModels.AccountViewModels;
+using Filla_Soft.Infrastructor.Services;
 using Filla_Soft.Infrastructure.Services;
 using Filla_Soft.Web.Filters;
 using Microsoft.AspNetCore.Authorization;
@@ -29,6 +30,7 @@ namespace Filla_Soft.Web.Controllers.api
         private readonly ILogger _logger;
         private IHostingEnvironment _env;
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly ProjectService _projectService;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -37,7 +39,8 @@ namespace Filla_Soft.Web.Controllers.api
             IEmailSender emailSender,
             ILoggerFactory loggerFactory,
             IHostingEnvironment env,
-            RoleManager<ApplicationRole> roleManager)
+            RoleManager<ApplicationRole> roleManager,
+            ProjectService projectService)
         {
             _userManager = userManager;
             _identityOptions = identityOptions;
@@ -46,6 +49,7 @@ namespace Filla_Soft.Web.Controllers.api
             _logger = loggerFactory.CreateLogger<AccountController>();
             _env = env;
             _roleManager = roleManager;
+            _projectService = projectService;
         }
 
         [HttpPost("login")]
@@ -64,7 +68,8 @@ namespace Filla_Soft.Web.Controllers.api
                 if (result.Succeeded)
                 {
                     var roles = await _userManager.GetRolesAsync(user);
-                    return AppUtil.SignIn(user, roles);
+                    var projects = _projectService.GetAssignedProject(user.Id, User.IsInRole(Filla_Soft.Core.Roles.Admin));
+                    return AppUtil.SignIn(user, roles, new { Projects = projects});
                 }
                 else
                 {
@@ -98,9 +103,9 @@ namespace Filla_Soft.Web.Controllers.api
             {
                 var user = await GetCurrentUserAsync();
                 var roles = await _userManager.GetRolesAsync(user);
-
+                var projects = _projectService.GetAssignedProject(user.Id, User.IsInRole(Filla_Soft.Core.Roles.Admin));
                 //get role user in project
-                return AppUtil.SignIn(user, roles);
+                return AppUtil.SignIn(user, roles, new { Projects = projects });
             }
 
             return Ok(new { IsLoggedIn = isLogin });

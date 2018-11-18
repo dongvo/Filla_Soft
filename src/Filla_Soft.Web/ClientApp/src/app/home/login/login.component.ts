@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             ])
         });
         this.formLogin.valueChanges.subscribe(res => {
-            console.log(res)
+            // console.log(res)
         })
     }
 
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             
             this.accountService.loginRegular(loginModel).subscribe( res => {
                 let user: any = res['user'];
-                this.accountService.setSession(user);
+                this.accountService.setSession(user, res['data']);
                 this.loginModal.hide();
                 this.loginControl.closeLogin();
             }, (error: HttpErrorResponse) =>{
