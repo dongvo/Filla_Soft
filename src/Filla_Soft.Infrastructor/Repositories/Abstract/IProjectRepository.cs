@@ -12,5 +12,7 @@ namespace Filla_Soft.Infrastructor.Repositories.Abstract
         List<Project> GetAssignedProject(int accountId, bool isAdmin);
 
         List<ProjectOverview> GetAllProject();
+
+        ProjectDetails GetProjectDetail(int id);
     }
 }

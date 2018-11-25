@@ -36,5 +36,10 @@ namespace Filla_Soft.Infrastructor.Services
             return _projectRepository.GetAllProject();
         }
 
+        public ProjectDetails GetProjectDetails(int id)
+        {
+            return _projectRepository.GetProjectDetail(id);
+        }
+
     }
 }

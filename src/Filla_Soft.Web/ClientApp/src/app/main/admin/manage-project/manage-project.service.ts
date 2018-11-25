@@ -24,4 +24,8 @@ export class ManageProjectService {
     getProject(): Observable<any> {
         return this.dataService.get('/api/ManageProject/GetAllProject');
     }
+
+    getProjectDetails(id: number): Observable<any> {
+        return this.dataService.get('/api/ManageProject/GetProjectDetails', {id: id});
+    }
 }

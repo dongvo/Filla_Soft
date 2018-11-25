@@ -68,7 +68,8 @@ namespace Filla_Soft.Web.Controllers.api
                 if (result.Succeeded)
                 {
                     var roles = await _userManager.GetRolesAsync(user);
-                    var projects = _projectService.GetAssignedProject(user.Id, User.IsInRole(Filla_Soft.Core.Roles.Admin));
+                    bool isAdmin = await _userManager.IsInRoleAsync(user, Filla_Soft.Core.Roles.Admin);
+                    var projects = _projectService.GetAssignedProject(user.Id, isAdmin);
                     return AppUtil.SignIn(user, roles, new { Projects = projects});
                 }
                 else
@@ -103,7 +104,8 @@ namespace Filla_Soft.Web.Controllers.api
             {
                 var user = await GetCurrentUserAsync();
                 var roles = await _userManager.GetRolesAsync(user);
-                var projects = _projectService.GetAssignedProject(user.Id, User.IsInRole(Filla_Soft.Core.Roles.Admin));
+                bool isAdmin = await _userManager.IsInRoleAsync(user, Filla_Soft.Core.Roles.Admin);
+                var projects = _projectService.GetAssignedProject(user.Id, isAdmin);
                 //get role user in project
                 return AppUtil.SignIn(user, roles, new { Projects = projects });
             }

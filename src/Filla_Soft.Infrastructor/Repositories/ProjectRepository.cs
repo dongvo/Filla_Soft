@@ -57,5 +57,19 @@ namespace Filla_Soft.Infrastructor.Repositories
 
             return result;
         }
+
+        public ProjectDetails GetProjectDetail(int id)
+        {
+            using(IDbConnection dbConnection = ProjectConnection)
+            {
+                var reader = dbConnection.QueryMultiple("spProjectSelectDetails", new
+                { id }, commandType: CommandType.StoredProcedure);
+                ProjectDetails result = new ProjectDetails();
+                result.Project = reader.ReadFirstOrDefault<Project>();
+                result.ProjectAccounts = reader.Read<ProjectAccount>().AsList();
+
+                return result;
+            }
+        }
     }
 }

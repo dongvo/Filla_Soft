@@ -16,4 +16,22 @@ namespace Filla_Soft.Core.Models
     {
         public int NumberOfMember { get; set; }
     }
+
+    public class ProjectAccount
+    {
+        public int id { get; set; }
+        
+        public string FirstName { get; set; }
+        
+        public string LastName { get; set; }
+
+        public string Email { get; set; }
+    }
+
+    public class ProjectDetails
+    {
+        public Project Project { get; set; }
+
+        public List<ProjectAccount> ProjectAccounts { get; set; }
+    }
 }

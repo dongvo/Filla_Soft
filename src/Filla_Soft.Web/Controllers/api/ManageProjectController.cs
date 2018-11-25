@@ -45,5 +45,13 @@ namespace Filla_Soft.Web.Controllers.api
                 projects = result
             });
         }
+
+        [HttpGet("GetProjectDetails")]
+        public IActionResult GetProjectDetails(int id)
+        {
+            var result = _projectService.GetProjectDetails(id);
+
+            return AppUtil.Success(result);
+        }
     }
 }
