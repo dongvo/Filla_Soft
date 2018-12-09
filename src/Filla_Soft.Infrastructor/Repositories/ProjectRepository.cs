@@ -71,5 +71,35 @@ namespace Filla_Soft.Infrastructor.Repositories
                 return result;
             }
         }
+
+        public bool AddProjectMember(int pId, int uId)
+        {
+            int result;
+            using (IDbConnection dbConnection = ProjectConnection)
+            {
+                result = dbConnection.QueryFirst<int>("spProjectAccountInsert", new
+                {
+                    projectId = pId,
+                    accountId = uId
+                }, commandType: CommandType.StoredProcedure);
+            }
+
+            return result > 0;
+        }
+
+        public bool RemoveProjectMember(int pId, int uId)
+        {
+            int result;
+            using (IDbConnection dbConnection = ProjectConnection)
+            {
+                result = dbConnection.QueryFirst<int>("spProjectAccountUpdateIsDeleted", new
+                {
+                    projectId = pId,
+                    accountId = uId
+                }, commandType: CommandType.StoredProcedure);
+            }
+
+            return result > 0;
+        }
     }
 }

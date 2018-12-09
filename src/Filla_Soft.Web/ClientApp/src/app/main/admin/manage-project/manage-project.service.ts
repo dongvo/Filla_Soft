@@ -28,4 +28,18 @@ export class ManageProjectService {
     getProjectDetails(id: number): Observable<any> {
         return this.dataService.get('/api/ManageProject/GetProjectDetails', {id: id});
     }
+
+    addMember(projectId: number, memId: number): Observable<any> {
+        return this.dataService.post('/api/ManageProject/AddMember', {
+            project: projectId,
+            member: memId
+        });
+    }
+
+    removeMember(projectId: number, memId: number): Observable<any> {
+        return this.dataService.post('/api/ManageProject/RemoveMember', {
+            project: projectId,
+            member: memId
+        });
+    }
 }

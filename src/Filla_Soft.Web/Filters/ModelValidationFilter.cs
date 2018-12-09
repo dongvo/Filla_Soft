@@ -6,7 +6,7 @@ namespace Filla_Soft.Web.Filters
 {
     public class ModelValidationFilter : IActionFilter
     {
-        public void OnActionExecuted(ActionExecutedContext filterContext)
+        public void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (!filterContext.ModelState.IsValid)
             {
@@ -28,9 +28,8 @@ namespace Filla_Soft.Web.Filters
             }
         }
 
-        public void OnActionExecuting(ActionExecutingContext context)
+        public void OnActionExecuted(ActionExecutedContext filterContext)
         {
-
         }
     }
 }

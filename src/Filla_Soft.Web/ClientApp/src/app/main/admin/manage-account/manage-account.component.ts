@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ManageAccountService } from './manage-account.service';
 
 @Component({
     selector: 'admin-manage-account',
@@ -9,18 +8,15 @@ import { ManageAccountService } from './manage-account.service';
     ]
 })
 
-export class AdminManageAccountComponent implements OnInit {
+export class AdminManageAccountComponent {
     
     constructor(
-        private manageAccountService: ManageAccountService
     ){
 
     }
 
     ngOnInit(): void {
-        this.manageAccountService.getAllAccount().subscribe(res => {
-            console.log(res);
-        })
+        
     }
 
 }

@@ -14,5 +14,9 @@ namespace Filla_Soft.Infrastructor.Repositories.Abstract
         List<ProjectOverview> GetAllProject();
 
         ProjectDetails GetProjectDetail(int id);
+
+        bool AddProjectMember(int pId, int uId);
+
+        bool RemoveProjectMember(int pId, int uId);
     }
 }

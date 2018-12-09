@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Filla_Soft.Core.Entities;
+using Filla_Soft.Core.ViewModels;
 using Filla_Soft.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -50,37 +51,25 @@ namespace Filla_Soft.Web.Controllers.api
         public async Task<IActionResult> GetAllAccount()
         {
             var currUser = await GetCurrentUserAsync();
-            var roles = await _userManager.GetRolesAsync(currUser);
-            if (roles.Any(r => r.ToLower() == "admin")) {
-                List<UserModel> lstUser = new List<UserModel>();
-                foreach (var user in _userManager.Users)
-                {
-                    if(user != currUser)
-                        lstUser.Add(new UserModel
-                        {
-                            Email = user.Email,
-                            CreatedDate = user.CreatedDate,
-                            FirstName = user.FirstName,
-                            Gender = user.Gender,
-                            LastName = user.LastName,
-                            LastUpdate = user.LastUpdate
-                        });
-                }
 
-                return Ok(new
-                {
-                    Result = lstUser
-                });
-            }
-            else
+            List<AccountViewModel> lstUser = new List<AccountViewModel>();
+            foreach (var user in _userManager.Users.ToList())
             {
-
-                return Ok(new
-                {
-                    Result = _userManager.Users
-                });
+                if(user.Id != currUser.Id)
+                    lstUser.Add(new AccountViewModel
+                    {
+                        Id = user.Id,
+                        Email = user.Email,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Gender = user.Gender,
+                        CreatedDate = user.CreatedDate,
+                        Role = _userManager.GetRolesAsync(user).Result.FirstOrDefault()
+                    });
             }
-            
+
+            return AppUtil.Success(lstUser.OrderBy(l => l.CreatedDate));
+
         }
 
         #region Helpers

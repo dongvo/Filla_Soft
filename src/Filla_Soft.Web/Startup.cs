@@ -80,7 +80,7 @@ namespace Filla_Soft.Web
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseSpaStaticFiles();

@@ -9,7 +9,15 @@ export class ProjectOverview {
     id: number;
     name: string;
     numberOfMember: number;
+    description: string;
     isDeleted: boolean;
+}
+
+export class ProjectAccount {
+    id: number;
+    firstName: string;
+    lastName: string;
+    emai: string;
 }
 
 export const ListProjectSortType: any = {

@@ -41,5 +41,14 @@ namespace Filla_Soft.Infrastructor.Services
             return _projectRepository.GetProjectDetail(id);
         }
 
+        public bool AddProjectMember(int pId, int uId)
+        {
+            return _projectRepository.AddProjectMember(pId, uId);
+        }
+
+        public bool RemoveProjectMember(int pId, int uId)
+        {
+            return _projectRepository.RemoveProjectMember(pId, uId);
+        }
     }
 }
