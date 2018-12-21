@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Filla_Soft.Core.Entities;
 using Filla_Soft.Core.ViewModels;
+using Filla_Soft.Core.ViewModels.AccountViewModels;
 using Filla_Soft.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -70,6 +71,25 @@ namespace Filla_Soft.Web.Controllers.api
 
             return AppUtil.Success(lstUser.OrderBy(l => l.CreatedDate));
 
+        }
+
+        [HttpPost("addAccount")]
+        public async Task<IActionResult> AddAccountAsync([FromBody] NewAccountViewModel model)
+        {
+            var user = _userManager.FindByEmailAsync(model.Email);
+            if(user.Result != null)
+            {
+                return AppUtil.Failure("Email existed");
+            }
+
+            var normalUser = new ApplicationUser { UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, PhoneNumber = "", EmailConfirmed = true };//, IsEnabled = true };
+            var result = await _userManager.CreateAsync(normalUser, model.Password);
+            if (result.Succeeded) {
+                _userManager.AddToRoleAsync(_userManager.FindByNameAsync(model.Email).GetAwaiter().GetResult(), "User").Result.ToString();
+                return AppUtil.Success(null);
+            }
+
+            return AppUtil.Failure("Error");
         }
 
         #region Helpers

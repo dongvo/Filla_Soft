@@ -15,4 +15,13 @@ export class ManageAccountService {
     public getAllAccount(): Observable<any> {
         return this.dataService.get('/api/manage/accounts');
     }
+
+    public addAccount(firstName: string, lastName: string, email: string, password: string): Observable<any> {
+        return this.dataService.post('/api/manage/addAccount', {
+            FirstName: firstName,
+            LastName: lastName,
+            Email: email,
+            Password: password
+        });
+    }
 }

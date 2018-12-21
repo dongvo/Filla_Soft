@@ -1,5 +1,7 @@
 
 .project-detail-header {
+    text-align: center;
+
     a {
         font-size: 1.2rem;
         font-weight: bold;
@@ -16,5 +18,10 @@
         font-size: 1.6rem;
         margin-right: 1rem;
         vertical-align: middle;
+    }
+
+    span {
+        padding: 15px 40px;
+        font-size: 24px;
     }
 }
