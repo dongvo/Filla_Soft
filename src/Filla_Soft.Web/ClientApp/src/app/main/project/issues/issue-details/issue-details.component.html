@@ -22,17 +22,17 @@
                     <b>Details</b>
                     <button class="btn btn-dark-green btn-action btn-edit-details" 
                     mdbWavesEffect *ngIf="!isChangeDetailMode"
-                    (click)="changeDetails()">
+                    (click)="changeDetails(1)">
                         Edit
                     </button> 
                     <button class="btn btn-danger btn-action btn-cancel-edit-details" 
                     mdbWavesEffect *ngIf="isChangeDetailMode"
-                    (click)="changeDetails()">
+                    (click)="changeDetails(2)">
                         Cancel
                     </button> 
                     <button class="btn btn-success btn-action btn-save-edit-details" 
                     mdbWavesEffect *ngIf="isChangeDetailMode"
-                    (click)="changeDetails()">
+                    (click)="changeDetails(3)">
                         Save
                     </button> 
                 </div>
@@ -40,19 +40,19 @@
                     <div class="field-item field-50">
                         <div class="field-name">Type:</div>
                         <div class="field-value">
-                            <span *ngIf="!isChangeDetailMode">value</span>
+                            <span *ngIf="!isChangeDetailMode">{{currentType}}</span>
                             <div class="btn-group" mdbDropdown
                             *ngIf="isChangeDetailMode">
                                 <button mdbDropdownToggle type="button"
                                  class="btn btn-outline-primary dropdown-toggle waves-light" 
                                  mdbWavesEffect>
-                                    Basic dropdown
+                                 {{currentType}}
                                 </button>
                             
                                 <div class="dropdown-menu dropdown-primary">
-                                    <a class="dropdown-item" href="javascript:void(0);">Action</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Another action</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Something else here</a>
+                                    <ng-container *ngFor="let type of issueTypes">
+                                        <a class="dropdown-item" href="javascript:void(0);" (click)="changeIssueType(type.id)">{{type.name}}</a>
+                                    </ng-container>
                                 </div>
                             </div>
                         </div>
@@ -61,37 +61,64 @@
                     <div class="field-item field-50">
                         <div class="field-name">Status:</div>
                         <div class="field-value">
-                                <span *ngIf="!isChangeDetailMode">value</span>
+                            <span *ngIf="!isChangeDetailMode">{{currentStatus}}</span>
+                            <div class="btn-group" mdbDropdown
+                            *ngIf="isChangeDetailMode">
+                                <button mdbDropdownToggle type="button"
+                                    class="btn btn-outline-primary dropdown-toggle waves-light" 
+                                    mdbWavesEffect>
+                                    {{currentStatus}}
+                                </button>
+                            
+                                <div class="dropdown-menu dropdown-primary">
+                                    <ng-container *ngFor="let type of issueStatus">
+                                        <a class="dropdown-item" href="javascript:void(0);" (click)="changeIssueStatus(type.id)">{{type.name}}</a>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-both"></div>
+                    </div>
+                    <div class="field-item field-50">
+                            <div class="field-name">Priority:</div>
+                            <div class="field-value">
+                                <span *ngIf="!isChangeDetailMode">{{currentPriority}}</span>
                                 <div class="btn-group" mdbDropdown
                                 *ngIf="isChangeDetailMode">
                                     <button mdbDropdownToggle type="button"
                                      class="btn btn-outline-primary dropdown-toggle waves-light" 
                                      mdbWavesEffect>
-                                        Basic dropdown
+                                     {{currentPriority}}
                                     </button>
                                 
                                     <div class="dropdown-menu dropdown-primary">
-                                        <a class="dropdown-item" href="javascript:void(0);">Action</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Another action</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Something else here</a>
+                                        <ng-container *ngFor="let type of issuePriority">
+                                            <a class="dropdown-item" href="javascript:void(0);" (click)="changeIssuePriority(type.id)">{{type.name}}</a>
+                                        </ng-container>
                                     </div>
                                 </div>
                             </div>
-                        <div class="clear-both"></div>
-                    </div>
-                    <div class="field-item">
-                        <div class="field-name">Proirity:</div>
-                        <div class="field-value">value</div>
-                        <div class="clear-both"></div>
+                            <div class="clear-both"></div>
                     </div>
                     <div class="field-item field-50">
-                        <div class="field-name">Type:</div>
-                        <div class="field-value">value</div>
-                        <div class="clear-both"></div>
-                    </div>
-                    <div class="field-item field-50">
-                        <div class="field-name">Status:</div>
-                        <div class="field-value">value</div>
+                        <div class="field-name">Resolution:</div>
+                        <div class="field-value">
+                            <span *ngIf="!isChangeDetailMode">{{currentResolution}}</span>
+                            <div class="btn-group" mdbDropdown
+                            *ngIf="isChangeDetailMode">
+                                <button mdbDropdownToggle type="button"
+                                    class="btn btn-outline-primary dropdown-toggle waves-light" 
+                                    mdbWavesEffect>
+                                    {{currentResolution}}
+                                </button>
+                            
+                                <div class="dropdown-menu dropdown-primary">
+                                    <ng-container *ngFor="let type of issueResolution">
+                                        <a class="dropdown-item" href="javascript:void(0);" (click)="changeIssueResolution(type.id)">{{type.name}}</a>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
                         <div class="clear-both"></div>
                     </div>
                     <div class="clear-both"></div>
@@ -103,17 +130,17 @@
                     <b>Description</b>
                     <ng-container *ngIf="description && !isChangeDescriptionMode">
                         <button class="btn btn-dark-green btn-action btn-edit-details" 
-                        mdbWavesEffect (click)="isChangeDescriptionMode = true">
+                        mdbWavesEffect (click)="isChangeDescriptionMode = true; tempDescription = description">
                             Edit
                         </button> 
                     </ng-container>
                     <ng-container *ngIf="isChangeDescriptionMode">
                         <button class="btn btn-danger btn-action btn-cancel-edit-details" 
-                        mdbWavesEffect>
+                        mdbWavesEffect (click)="isChangeDescriptionMode = false; tempDescription = description">
                             Cancel
                         </button> 
                         <button class="btn btn-success btn-action btn-save-edit-details" 
-                        mdbWavesEffect>
+                        mdbWavesEffect (click)="isChangeDescriptionMode = false;  description = tempDescription">
                             Save
                         </button> 
                     </ng-container>
@@ -121,16 +148,16 @@
                 <div class="field-items">
                     <div class="issue-has-description" *ngIf="description">
                         <div *ngIf="!isChangeDescriptionMode">
-                            has description
+                            {{description}}
                         </div>
-                        <textarea *ngIf="isChangeDescriptionMode">has description</textarea>
+                        <textarea class="input-description" *ngIf="isChangeDescriptionMode" [(ngModel)]="tempDescription"></textarea>
                     </div>
                     <div class="issue-no-description" *ngIf="!description">
                         <a href="javascript:void(0)" *ngIf="!isChangeDescriptionMode" 
                         (click)="isChangeDescriptionMode = true">
                             <i>Click to add desciption</i>
                         </a>
-                        <textarea *ngIf="isChangeDescriptionMode"></textarea>
+                        <textarea class="input-description" *ngIf="isChangeDescriptionMode"[(ngModel)]="tempDescription"></textarea>
                     </div>
 
 
@@ -165,8 +192,12 @@
                 </div>
                 <div class="field-items">
                     <div class="field-item">
-                        <div class="field-name">name</div>
-                        <div class="field-value">value</div>
+                        <div class="field-name">Assignee</div>
+                        <div class="field-value">Andrei Timohi</div>
+                    </div>
+                    <div class="field-item">
+                        <div class="field-name">Reporter</div>
+                        <div class="field-value">Andrei Timohi</div>
                     </div>
                 </div>
             </div>

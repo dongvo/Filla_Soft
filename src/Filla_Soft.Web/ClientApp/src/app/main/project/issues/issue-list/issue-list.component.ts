@@ -47,32 +47,32 @@ export class IssueListComponent implements OnInit, AfterViewInit {
     ngOnInit(): void {
         this.listIssues = [
             {
-                id: 1, key: 'PR-1', summary: 'test issue 1 key a key b key c key d key e key f', 
-                status: 2, type: 1, createdDate: new Date(2018, 1, 1), updatedDate: new Date(2018, 1, 3),
+                id: 1, key: 'PR-1', summary: 'New requirement', 
+                status: 2, type: 1, priority: 1, resolution: 1, createdDate: new Date(2018, 1, 1), updatedDate: new Date(2018, 1, 3),
                 reporterID: 'asc',
                 reporterName: 'nguyen van A'
             },
             {
-                id: 2, key: 'PR-2', summary: 'test issue 2 key a key b key c key d key e key f', 
-                status: 1, type: 2, createdDate: new Date(2018, 1, 2), updatedDate: new Date(2018, 1, 3),
+                id: 2, key: 'PR-2', summary: 'Found a bug on front-end', 
+                status: 1, type: 2, priority: 1, resolution: 1, createdDate: new Date(2018, 1, 2), updatedDate: new Date(2018, 1, 3),
                 reporterID: 'asc',
                 reporterName: 'nguyen van B'
             },
             {
-                id: 3, key: 'PR-3', summary: 'test issue 3 key a key b key c key d key e key f', 
-                status: 2, type: 3, createdDate: new Date(2018, 1, 7), updatedDate: new Date(2018, 1, 3),
+                id: 3, key: 'PR-3', summary: 'Error with I.E', 
+                status: 2, type: 3, priority: 1, resolution: 1, createdDate: new Date(2018, 1, 7), updatedDate: new Date(2018, 1, 3),
                 reporterID: 'asc',
                 reporterName: 'nguyen van A'
             },
             {
-                id: 4, key: 'PR-4', summary: 'test issue 4 key a key b key c key d key e key f', 
-                status: 3, type: 4, createdDate: new Date(2018, 1, 4), updatedDate: new Date(2018, 1, 3),
+                id: 4, key: 'PR-4', summary: 'Change function', 
+                status: 3, type: 4, priority: 1, resolution: 1, createdDate: new Date(2018, 1, 4), updatedDate: new Date(2018, 1, 3),
                 reporterID: 'asc',
                 reporterName: 'nguyen van B'
             },
             {   
-                id: 5, key: 'PR-5', summary: 'test issue 5 key a key b key c key d key e key f', 
-                status: 4, type: 3, createdDate: new Date(2018, 1, 8), updatedDate: new Date(2018, 1, 3),
+                id: 5, key: 'PR-5', summary: 'Image still not changed', 
+                status: 4, type: 3, priority: 1, resolution: 1, createdDate: new Date(2018, 1, 8), updatedDate: new Date(2018, 1, 3),
                 reporterID: 'asc',
                 reporterName: 'nguyen van B'
             }
@@ -83,7 +83,7 @@ export class IssueListComponent implements OnInit, AfterViewInit {
         this.listAssignees = [
             {id: 0, name: 'All'},
             {id: 1, name: 'nguyen van A'},
-            {id: 2, name: 'nguyen van B nguyen van B'},
+            {id: 2, name: 'nguyen van B'},
             {id: 3, name: 'nguyen van C'},
             {id: 4, name: 'nguyen van D'},
             {id: 5, name: 'nguyen van E'},
@@ -94,10 +94,11 @@ export class IssueListComponent implements OnInit, AfterViewInit {
 
         this.listStatusFilter = [
             { status: 0, name: 'All'},
-            { status: 1, name: 'AAAA'},
-            { status: 2, name: 'BBBB'},
-            { status: 3, name: 'CCCC'},
-            { status: 4, name: 'DDDD'}
+            { status: 1, name: 'Open'},
+            { status: 2, name: 'Resolved'},
+            { status: 3, name: 'Inprogress'},
+            { status: 4, name: 'Closed'},
+            { status: 5, name: 'Reopened'}
         ];
 
 

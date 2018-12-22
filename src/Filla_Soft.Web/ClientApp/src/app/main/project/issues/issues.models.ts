@@ -6,6 +6,8 @@ export class Issue {
     summary: string;
     type: number;
     status: number;
+    priority: number;
+    resolution: number;
     createdDate: Date;
     updatedDate: Date;
     reporterID: string;
@@ -29,6 +31,16 @@ export class IssueType extends SelectOptionModelBase {
 }
 
 export class IssueStatus extends SelectOptionModelBase {
+    // id: number;
+    // name: string;
+}
+
+export class IssuePriority extends SelectOptionModelBase {
+    // id: number;
+    // name: string;
+}
+
+export class IssueResolution extends SelectOptionModelBase {
     // id: number;
     // name: string;
 }
