@@ -50,7 +50,6 @@ export class HomeComponent implements OnInit {
 
     this.accountService.projectsData.subscribe(res => {
       if(res) {
-        console.log(res);
         this.projects = res['projects'] || new Array();
       }
     })
